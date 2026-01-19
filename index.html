@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonvinco Holdings</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  /* Base */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: #0a1a2f; /* Navy */
+    color: white;
+  }
+
+  /* Landing */
+  .landing {
+    background: linear-gradient(
+      rgba(10,26,47,0.85),
+      rgba(10,26,47,0.85)
+    ),
+    url('office.png') no-repeat center/cover;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Date & Time */
+  .datetime {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .datetime i { color: #4fc3f7; }
+
+  /* Typewriter */
+  .typewriter h1,
+  .typewriter h2 {
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #4fc3f7;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000;
+  }
+
+  .typewriter h1 {
+    font-size: 2.2rem;
+    color: #4fc3f7; /* Sky Blue */
+  }
+
+  .typewriter h2 {
+    font-size: 2.8rem;
+    color: #81d4fa;
+  }
+
+  .typewriter p {
+    margin-top: 10px;
+    color: #cfd8dc;
+    font-size: 1rem;
+  }
+
+  /* Buttons */
+  .buttons {
+    margin-top: 30px;
+  }
+
+  .discover-btn {
+    padding: 12px 22px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to right, #4fc3f7, #0288d1);
+    color: #02101f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  }
+
+  .discover-btn:hover {
+    transform: scale(1.05);
+  }
+
+  /* Toggle */
+  .switch-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .switch-label h3 {
+    margin: 0;
+    color: #4fc3f7;
+  }
+
+  .switch-label p {
+    margin: 4px 0 10px;
+    font-size: 0.9rem;
+    color: #b0bec5;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input { display: none; }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #555;
+    border-radius: 34px;
+    inset: 0;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #4fc3f7;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  /* Footer */
+  footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.8rem;
+    color: #90a4ae;
+  }
+</style>
+</head>
+<body>
+
+<div class="landing">
+
+  <!-- Date & Time -->
+  <div class="datetime">
+    <div><i class="fas fa-calendar-alt"></i> 2026</div>
+    <div><i class="fas fa-clock"></i> <span id="time">--:--:--</span></div>
+  </div>
+
+  <!-- Hero Text -->
+  <div class="typewriter">
+    <h1>Welcome To Bovinco</h1>
+    <h2><span id="dynamicText"></span></h2>
+    <p>Strategic Holdings. Intelligent Growth.</p>
+  </div>
+
+  <!-- Action -->
+  <div class="buttons">
+    <button class="discover-btn" onclick="goToService()">
+      Discover <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- Division Switch -->
+  <div class="switch-container">
+    <div class="switch-label">
+      <h3>Switch Division</h3>
+      <p>Switch to Bonvinco Tactical Response</p>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="divisionSwitch">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <footer>⚡ Powered by BlackLogic Technologies Pty Ltd</footer>
+</div>
+
+<script>
+  /* Clock */
+  function updateTime() {
+    const now = new Date();
+    document.getElementById('time').innerText =
+      now.toLocaleTimeString('en-GB');
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  /* Discover */
+  function goToService() {
+    const icon = document.querySelector('.discover-btn i');
+    icon.classList.add('fa-spin');
+    setTimeout(() => {
+      window.location.href = 'service.html';
+    }, 1200);
+  }
+
+  /* Toggle */
+  document.getElementById('divisionSwitch').addEventListener('change', e => {
+    if(e.target.checked){
+      window.location.href = '../tactical/landing.html';
+    }
+  });
+
+  /* Typewriter */
+  const text = "Holdings Division";
+  let i = 0, del = false;
+  const el = document.getElementById('dynamicText');
+
+  function type() {
+    el.textContent = del
+      ? text.substring(0, i--)
+      : text.substring(0, i++);
+
+    if (i === text.length + 1) del = true;
+    if (i === 0) del = false;
+
+    setTimeout(type, del ? 80 : 150);
+  }
+  type();
+</script>
+
+</body>
+</html>
+
+

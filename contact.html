@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bonvinco Holdings | Contact Us</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+:root {
+  --navy: #0b1c2d;
+  --deep-navy: #001633;
+  --sky: #7ecbff;
+  --gold: #FFD700;
+  --glass: rgba(255,255,255,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #001f3f, #000814);
+  color: #fff;
+}
+
+/* ================= Drawer Toggle ================= */
+.drawer-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(0,31,63,0.9);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.3rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ================= Drawer ================= */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100px;
+  height: 100%;
+  width: 100px;
+  background: rgba(0,22,51,0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  gap: 30px;
+  z-index: 9999;
+  box-shadow: -6px 0 25px rgba(0,0,0,0.6);
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.drawer-item {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drawer-item i {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 45vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    url("call.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--sky);
+}
+
+/* ================= CONTENT ================= */
+.container {
+  max-width: 1100px;
+  margin: -70px auto 60px;
+  padding: 0 20px;
+}
+
+/* ================= GRID ================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+}
+
+.card h2 {
+  color: var(--sky);
+  margin-top: 0;
+}
+
+/* ================= CONTACT INFO ================= */
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.info-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.info-left i {
+  color: var(--sky);
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--sky);
+  cursor: pointer;
+}
+
+/* ================= FORM ================= */
+label {
+  font-size: 0.85rem;
+  color: var(--sky);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 15px;
+  border-radius: 6px;
+  border: none;
+  font-family: inherit;
+}
+
+button.submit-btn {
+  background: linear-gradient(to right, var(--sky), #4da3ff);
+  color: #000;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+/* SOCIAL */
+.social-links{
+  display:flex;
+  justify-content:space-around;
+  margin-top:20px;
+}
+.social-links a{
+  color:#fff;
+  font-size:22px;
+}
+.social-links a:hover{color:#d4af37;}
+
+/* ================= FOOTER ================= */
+footer {
+  background: var(--deep-navy);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Drawer Toggle -->
+<button id="drawerToggle" class="drawer-toggle" aria-label="Menu">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Drawer -->
+<nav class="drawer" id="drawer">
+  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i>Home</a>
+  <a href="service.html" class="drawer-item"><i class="fas fa-concierge-bell"></i>Services</a>
+  <a href="about.html" class="drawer-item"><i class="fas fa-info-circle"></i>About</a>
+  <a href="progress.html" class="drawer-item"><i class="fas fa-scale-balanced"></i>Legal</a>
+  <a href="contact.html" class="drawer-item"><i class="fas fa-envelope"></i>Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Contact Bovinco Holdings</h1>
+</section>
+
+<!-- CONTENT -->
+<section class="container">
+  <div class="grid">
+
+    <!-- CONTACT DETAILS -->
+    <div class="card">
+      <h2>Reach Us</h2>
+
+      <div class="info-item">
+        <div class="info-left">
+          <i class="fas fa-envelope"></i>
+          <span>bovincoholdings@gmail.com</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('bonvincotrading@gmail.com')">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+
+      <div class="info-item">
+        <div class="info-left">
+          <i class="fas fa-user-shield"></i>
+          <span>admin@bovinco.com</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('admin@bonvinco.com')">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+
+      <div class="info-item">
+        <div class="info-left">
+          <i class="fas fa-phone"></i>
+          <span>Ermelo – 087 149 4670</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('0871494670')">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+
+      <div class="info-item">
+        <div class="info-left">
+          <i class="fas fa-phone"></i>
+          <span>Witbank – 0686911235</span>
+        </div>
+        <button class="copy-btn" onclick="copyText('0836217499')">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+
+      <p style="font-size:0.85rem; color:#ccc;">
+          <div class="reach-item">
+    <div class="reach-left">
+      <i class="fas fa-location-dot"></i> 4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034
+    </div>
+  </div>
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <div class="card">
+      <h2>Send Us a Message</h2>
+
+      <label>Full Name</label>
+      <input type="text" placeholder="Your name">
+
+      <label>Email Address</label>
+      <input type="email" placeholder="Your email">
+
+      <label>Contact Number</label>
+      <input type="text" placeholder="Your phone number">
+
+      <label>Message</label>
+      <textarea rows="4" placeholder="Write your message"></textarea>
+
+      <button class="submit-btn">Submit Enquiry</button>
+    </div>
+
+  </div>
+  
+<!-- SOCIAL -->
+<div class="social-links">
+  <a href="https://www.facebook.com/profile.php?id=61586572542499"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/bovincoholdings"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@bovincoholdings"><i class="fab fa-tiktok"></i></a>
+  <a href="https://wa.me/27725938007" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+</section>
+
+<footer>
+  © 2026 Bovinco Holdings | Powered by BlackLogic Technologies Pty Ltd
+</footer>
+
+<script>
+const toggle = document.getElementById("drawerToggle");
+const drawer = document.getElementById("drawer");
+
+toggle.addEventListener("click", () => {
+  drawer.classList.toggle("open");
+});
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
+}
+</script>
+
+</body>
+</html>
