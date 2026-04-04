@@ -216,7 +216,248 @@ footer a {
 
   </div>
 </section>
+<!-- BOVINCO HOLDINGS CHATBOT -->
+<style>
+/* BUTTON */
+#bonvi-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#00BFFF; /* Electric Sky Blue */
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 0 15px #00BFFF;
+}
 
+/* CHAT BOX */
+#bonvi-chat{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:320px;
+  background:#001F3F; /* Navy */
+  border-radius:15px;
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 0 20px #00BFFF;
+}
+
+/* HEADER */
+.chat-header{
+  background:#00BFFF; /* Electric Sky Blue */
+  color:white;
+  padding:10px;
+  font-weight:bold;
+}
+
+/* MESSAGES */
+.chat-body{
+  padding:10px;
+  height:300px;
+  overflow-y:auto;
+}
+
+/* BUBBLES */
+.bot{
+  background:white;
+  color:#001F3F;
+  padding:8px;
+  border-radius:10px;
+  margin:5px 0;
+}
+
+.user{
+  background:#00BFFF;
+  color:white;
+  padding:8px;
+  border-radius:10px;
+  margin:5px 0;
+  text-align:right;
+}
+
+/* SUGGESTIONS */
+.suggestions{
+  padding:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+
+.suggestions button{
+  background:#00BFFF;
+  border:none;
+  padding:5px 10px;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+}
+</style>
+
+<button id="bonvi-btn">💬</button>
+
+<div id="bonvi-chat">
+  <div class="chat-header">✨ Bonvi - Bovinco Holdings</div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="suggestions" id="suggestions">
+    <button onclick="send('services')">Services</button>
+    <button onclick="send('location')">Location</button>
+    <button onclick="send('contact')">Contact</button>
+    <button onclick="send('faq')">FAQ</button>
+  </div>
+</div>
+
+<script>
+const chat = document.getElementById("bonvi-chat");
+const body = document.getElementById("chatBody");
+const suggestions = document.getElementById("suggestions");
+
+document.getElementById("bonvi-btn").onclick = ()=>{
+  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+  chat.style.flexDirection = "column";
+};
+
+// GREETING
+function greet(){
+  addBot(`Hi 👋 I'm Bonvi, your Bovinco Holdings assistant!<br><br>
+  I’m here to help you explore our services, find our location, or connect with our team.<br><br>
+  How can I help you today?`);
+}
+greet();
+
+// SEND FUNCTION
+function send(type){
+  addUser(type);
+
+if(type === "services"){
+  addBot(`Here are all the services offered by Bovinco Holdings 🛠:<br><br>
+
+<b>Core Operations</b><br>
+Bovinco Holdings delivers reliable, professionally managed services designed to support operational continuity and efficiency.<br><br>
+
+<b>Mining Services</b><br>
+Operational support services tailored to mining environments, ensuring compliance and efficiency.<br><br>
+
+<b>Mining Equipment Supply</b><br>
+Supply of essential tools and equipment supporting daily mining operations.<br><br>
+
+<b>Cleaning Services</b><br>
+Professional cleaning services for commercial, industrial, and domestic facilities.<br><br>
+
+<b>Support & Infrastructure</b><br>
+Essential maintenance, security, and infrastructure support services.<br><br>
+
+<b>Building Maintenance</b><br>
+Preventive and corrective maintenance ensuring safe and functional facilities.<br><br>
+
+<b>Camera Installation</b><br>
+Installation of surveillance systems for enhanced monitoring and safety.<br><br>
+
+<b>Security Services</b><br>
+Professional security personnel and access control solutions.<br><br>
+
+<b>Additional Services</b><br>
+Complementary services supporting workforce safety and operations.<br><br>
+
+<b>Event Management</b><br>
+Structured event coordination and operational support.<br><br>
+
+<b>PPE Supply</b><br>
+Supply of certified personal protective equipment across industries.`);
+  
+  showSuggestions(["pricing","book","contact","faq"]);
+}
+
+  else if(type === "location"){
+    addBot(`Sure! Here's our location 📍:<br>
+    4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034<br><br>
+    <img src="map.jpg" alt="Bovinco Location" style="width:100%;border-radius:10px;">`);
+    showSuggestions(["services","contact","faq"]);
+  }
+
+  else if(type === "contact"){
+    addBot(`Of course! You can reach Bovinco Holdings on socials or email us:<br><br>
+    📧 bovincoholdings@gmail.com<br>
+    📧 admin@bovinco.com<br><br>
+    Ermelo – 087 149 4670<br>
+    Witbank – 068 691 1235`);
+    showSuggestions(["location","services","faq"]);
+  }
+
+  else if(type === "faq"){
+    addBot(`Here are some frequently asked questions 🤔:<br><br>
+    1️⃣ What are your operating hours?<br>
+    2️⃣ How do I request PPE?<br>
+    3️⃣ How do I book professional services?<br>
+    4️⃣ Do you provide emergency support?<br><br>
+    Click a question to see the answer.`);
+    showSuggestions(["hours","ppe","book","emergency"]);
+  }
+
+  else if(type === "hours"){
+    addBot(`🕘 We operate Monday to Friday, 8am to 5pm. For emergencies, we are available 24/7!`);
+    showSuggestions(["services","contact","faq"]);
+  }
+
+  else if(type === "ppe"){
+    addBot(`To request PPE supplies, contact our admin via 📧 admin@bovinco.com or call 📞 087 149 4670. We'll guide you step by step.`);
+    showSuggestions(["services","contact","faq"]);
+  }
+
+  else if(type === "book"){
+    addBot(`To book professional services, simply email 📧 bovincoholdings@gmail.com or call 📞 087 149 4670. Our team will assist you!`);
+    showSuggestions(["services","contact","faq"]);
+  }
+
+  else if(type === "emergency"){
+    addBot(`Yes! We provide emergency support for critical operational needs. 🚨 Call us immediately if urgent.`);
+    showSuggestions(["services","contact","faq"]);
+  }
+
+  else if(type === "pricing"){
+    addBot(`Pricing depends on the service requested. Please contact our admin team for a detailed quote 📧 admin@bovinco.com`);
+    showSuggestions(["services","contact","faq"]);
+  }
+}
+
+// SHOW DYNAMIC SUGGESTIONS
+function showSuggestions(options){
+  suggestions.innerHTML = "";
+  const map = {
+    services:"Services",
+    location:"Location",
+    contact:"Contact",
+    faq:"FAQ",
+    hours:"Operating Hours",
+    ppe:"Request PPE",
+    book:"Book Services",
+    emergency:"Emergency Support",
+    pricing:"Pricing"
+  };
+
+  options.forEach(opt=>{
+    let btn = document.createElement("button");
+    btn.innerHTML = map[opt];
+    btn.onclick = ()=>send(opt);
+    suggestions.appendChild(btn);
+  });
+}
+
+// MESSAGE FUNCTIONS
+function addBot(text){
+  body.innerHTML += `<div class="bot">${text}</div>`;
+  body.scrollTop = body.scrollHeight;
+}
+
+function addUser(text){
+  body.innerHTML += `<div class="user">${text}</div>`;
+}
+</script>
 <footer>
   © 2026 Bovinco Holdings |
   <a href="privacy.html">Privacy Policy</a> |
