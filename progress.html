@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>License - Bonvinco Holdings</title>
+<title>Legal & License | Bonvinco Holdings</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #001f3f;
-  --deep-navy: #001633;
-  --gold: #FFD700;
-  --sky: #87CEEB;
-  --glass: rgba(255,255,255,0.08);
+  --accent: #00d4ff; /* Tactical Cyan */
+  --bg-dark: #050505; /* Pure Black */
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-dim: #888;
 }
 
 * {
@@ -22,127 +23,174 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #001f3f, #000814);
-  color: #fff;
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  line-height: 1.6;
 }
 
-/* ================= Drawer Toggle ================= */
+/* ================= Drawer Navigation ================= */
 .drawer-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 25px;
   z-index: 10000;
-  background: rgba(0, 31, 63, 0.9);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 1.3rem;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 12px 15px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* ================= Drawer ================= */
 .drawer {
   position: fixed;
   top: 0;
-  right: -100px;
+  right: -280px;
   height: 100%;
-  width: 100px;
-  background: rgba(0, 22, 51, 0.98);
+  width: 280px;
+  background: rgba(5, 5, 5, 0.98);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  gap: 30px;
+  padding: 100px 40px;
+  gap: 25px;
   z-index: 9999;
-  box-shadow: -6px 0 25px rgba(0,0,0,0.6);
+  border-left: 1px solid var(--border);
+  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.drawer.open {
-  right: 0;
-}
+.drawer.open { right: 0; }
 
 .drawer-item {
-  color: var(--gold);
+  color: #fff;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 15px;
+  transition: 0.3s;
 }
 
-.drawer-item i {
-  font-size: 1.7rem;
-  margin-bottom: 6px;
-}
+.drawer-item i { color: var(--accent); }
 
-/* ================= Banner ================= */
+/* ================= BANNER ================= */
 .banner {
-  height: 320px;
-  background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+  height: 45vh;
+  background: 
+    linear-gradient(to bottom, rgba(5,5,5,0.2), var(--bg-dark)),
     url("logo.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 45px 45px;
+  mask-image: radial-gradient(circle, black, transparent 90%);
 }
 
 .banner h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--gold);
-  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin: 0;
+  z-index: 1;
+  text-transform: uppercase;
 }
 
-/* ================= Content ================= */
+/* ================= CONTENT ================= */
 .content {
-  max-width: 1100px;
-  margin: -70px auto 60px;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: -60px auto 100px;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
 }
 
-/* ================= Grid ================= */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-/* ================= Static Cards ================= */
 .card {
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 28px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 4px;
+  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.05);
 }
 
 .card h2 {
-  color: var(--sky);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .card p {
-  line-height: 1.7;
-  color: #e6e6e6;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
 }
 
-/* ================= Footer ================= */
+.card strong {
+  color: #fff;
+  display: block;
+  margin-top: 10px;
+}
+
+/* ================= FOOTER ================= */
 footer {
-  background: var(--deep-navy);
+  background: #000;
+  padding: 60px 20px;
   text-align: center;
-  padding: 25px;
-  font-size: 0.85rem;
-  color: #ccc;
+  border-top: 1px solid var(--border);
 }
 
 footer a {
-  color: var(--sky);
+  color: var(--accent);
   text-decoration: none;
-  margin: 0 6px;
+  font-size: 0.75rem;
+  margin: 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-copy {
+  margin-top: 25px;
+  font-size: 0.7rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .banner { height: 35vh; }
 }
 </style>
 </head>
@@ -150,319 +198,91 @@ footer a {
 <body>
 
 <!-- Drawer Toggle -->
-<button id="drawerToggle" class="drawer-toggle" aria-label="Menu">
+<button id="drawerToggle" class="drawer-toggle">
   <i class="fas fa-bars"></i>
 </button>
 
 <!-- Drawer -->
 <nav class="drawer" id="drawer">
-  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i>Home</a>
-  <a href="service.html" class="drawer-item"><i class="fas fa-concierge-bell"></i>Services</a>
-  <a href="about.html" class="drawer-item"><i class="fas fa-info-circle"></i>About</a>
-  <a href="progress.html" class="drawer-item"><i class="fas fa-scale-balanced"></i>Legal</a>
-  <a href="contact.html" class="drawer-item"><i class="fas fa-envelope"></i>Contact</a>
+  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i> Home</a>
+  <a href="service.html" class="drawer-item"><i class="fas fa-cog"></i> Services</a>
+  <a href="about.html" class="drawer-item"><i class="fas fa-shield-alt"></i> About</a>
+  <a href="progress.html" class="drawer-item"><i class="fas fa-file-contract"></i> Legal</a>
+  <a href="contact.html" class="drawer-item"><i class="fas fa-at"></i> Contact</a>
 </nav>
 
 <!-- Banner -->
-<div class="banner">
-  <h1>Bovinco Holdings License</h1>
-</div>
+<section class="banner">
+  <h1>Regulatory Framework</h1>
+</section>
 
 <!-- Content -->
 <section class="content">
   <div class="grid">
 
     <div class="card">
-      <h2>Authorized By</h2>
+      <h2><i class="fas fa-shield-halved"></i> Authorization</h2>
       <p>
-        BlackLogic Technologies Hardware and Projects Pty Ltd<br><br>
+        Infrastructure developed and authorized by 
+        <strong>BlackLogic Technologies Hardware and Projects Pty Ltd</strong>
+        Registration: 2025/885280/07
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-code-branch"></i> Deployment</h2>
+      <p>
+        The Bovinco Modern UI Website Intelligence Infrastructure was engineered 
+        by <strong>BlackLogic Technologies</strong> specifically for 
+        Bovinco Holdings operational requirements.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-scale-balanced"></i> Terms</h2>
+      <p>
+        Usage of this digital asset implies consent to all security protocols. 
+        All systems remain protected under international intellectual property statutes.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-gavel"></i> Jurisdiction</h2>
+      <p>
+        Unauthorized reproduction or reverse engineering is strictly prohibited 
+        under the laws of the Republic of South Africa.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-microchip"></i> Engineering</h2>
+      <p>
         <strong>Lead Engineer:</strong> Mr. M.S. Mathebula<br>
         <strong>Lead Designer:</strong> Quinn Asanda
       </p>
     </div>
 
     <div class="card">
-      <h2>License Statement</h2>
+      <h2><i class="fas fa-copyright"></i> Rights</h2>
       <p>
-        The Bonvinco Modern UI Website Intelligence Infrastructure was created
-        and deployed by BlackLogic Technologies under a formal agreement with
-        Bonvinco Holdings.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>User Terms & Conditions</h2>
-      <p>
-        Users agree to responsible and lawful use of this platform.
-        All content and systems remain protected intellectual property.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>All Rights Reserved</h2>
-      <p>
-        Unauthorized reproduction, distribution, or use is strictly prohibited
-        under South African law.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Powered By</h2>
-      <p>
-        BlackLogic Technologies<br>
-        Hardware and Projects Pty Ltd
+        © 2026 Bovinco Holdings. <br>
+        Digital Infrastructure &copy; BlackLogic Technologies. <br>
+        All rights reserved.
       </p>
     </div>
 
   </div>
 </section>
-<!-- BOVINCO HOLDINGS CHATBOT -->
-<style>
-/* BUTTON */
-#bonvi-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  border:none;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 0 15px #00BFFF;
-}
 
-/* CHAT BOX */
-#bonvi-chat{
-  position:fixed;
-  bottom:90px;
-  right:20px;
-  width:320px;
-  background:#001F3F; /* Navy */
-  border-radius:15px;
-  display:none;
-  flex-direction:column;
-  overflow:hidden;
-  box-shadow:0 0 20px #00BFFF;
-}
-
-/* HEADER */
-.chat-header{
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  padding:10px;
-  font-weight:bold;
-}
-
-/* MESSAGES */
-.chat-body{
-  padding:10px;
-  height:300px;
-  overflow-y:auto;
-}
-
-/* BUBBLES */
-.bot{
-  background:white;
-  color:#001F3F;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-}
-
-.user{
-  background:#00BFFF;
-  color:white;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-  text-align:right;
-}
-
-/* SUGGESTIONS */
-.suggestions{
-  padding:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-}
-
-.suggestions button{
-  background:#00BFFF;
-  border:none;
-  padding:5px 10px;
-  border-radius:10px;
-  color:white;
-  cursor:pointer;
-}
-</style>
-
-<button id="bonvi-btn">💬</button>
-
-<div id="bonvi-chat">
-  <div class="chat-header">✨ Bonvi - Bovinco Holdings</div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="suggestions" id="suggestions">
-    <button onclick="send('services')">Services</button>
-    <button onclick="send('location')">Location</button>
-    <button onclick="send('contact')">Contact</button>
-    <button onclick="send('faq')">FAQ</button>
-  </div>
-</div>
-
-<script>
-const chat = document.getElementById("bonvi-chat");
-const body = document.getElementById("chatBody");
-const suggestions = document.getElementById("suggestions");
-
-document.getElementById("bonvi-btn").onclick = ()=>{
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-  chat.style.flexDirection = "column";
-};
-
-// GREETING
-function greet(){
-  addBot(`Hi 👋 I'm Bonvi, your Bovinco Holdings assistant!<br><br>
-  I’m here to help you explore our services, find our location, or connect with our team.<br><br>
-  How can I help you today?`);
-}
-greet();
-
-// SEND FUNCTION
-function send(type){
-  addUser(type);
-
-if(type === "services"){
-  addBot(`Here are all the services offered by Bovinco Holdings 🛠:<br><br>
-
-<b>Core Operations</b><br>
-Bovinco Holdings delivers reliable, professionally managed services designed to support operational continuity and efficiency.<br><br>
-
-<b>Mining Services</b><br>
-Operational support services tailored to mining environments, ensuring compliance and efficiency.<br><br>
-
-<b>Mining Equipment Supply</b><br>
-Supply of essential tools and equipment supporting daily mining operations.<br><br>
-
-<b>Cleaning Services</b><br>
-Professional cleaning services for commercial, industrial, and domestic facilities.<br><br>
-
-<b>Support & Infrastructure</b><br>
-Essential maintenance, security, and infrastructure support services.<br><br>
-
-<b>Building Maintenance</b><br>
-Preventive and corrective maintenance ensuring safe and functional facilities.<br><br>
-
-<b>Camera Installation</b><br>
-Installation of surveillance systems for enhanced monitoring and safety.<br><br>
-
-<b>Security Services</b><br>
-Professional security personnel and access control solutions.<br><br>
-
-<b>Additional Services</b><br>
-Complementary services supporting workforce safety and operations.<br><br>
-
-<b>Event Management</b><br>
-Structured event coordination and operational support.<br><br>
-
-<b>PPE Supply</b><br>
-Supply of certified personal protective equipment across industries.`);
-  
-  showSuggestions(["pricing","book","contact","faq"]);
-}
-
-  else if(type === "location"){
-    addBot(`Sure! Here's our location 📍:<br>
-    4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034<br><br>
-    <img src="map.jpg" alt="Bovinco Location" style="width:100%;border-radius:10px;">`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "contact"){
-    addBot(`Of course! You can reach Bovinco Holdings on socials or email us:<br><br>
-    📧 bovincoholdings@gmail.com<br>
-    📧 admin@bovinco.com<br><br>
-    Ermelo – 087 149 4670<br>
-    Witbank – 068 691 1235`);
-    showSuggestions(["location","services","faq"]);
-  }
-
-  else if(type === "faq"){
-    addBot(`Here are some frequently asked questions 🤔:<br><br>
-    1️⃣ What are your operating hours?<br>
-    2️⃣ How do I request PPE?<br>
-    3️⃣ How do I book professional services?<br>
-    4️⃣ Do you provide emergency support?<br><br>
-    Click a question to see the answer.`);
-    showSuggestions(["hours","ppe","book","emergency"]);
-  }
-
-  else if(type === "hours"){
-    addBot(`🕘 We operate Monday to Friday, 8am to 5pm. For emergencies, we are available 24/7!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "ppe"){
-    addBot(`To request PPE supplies, contact our admin via 📧 admin@bovinco.com or call 📞 087 149 4670. We'll guide you step by step.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "book"){
-    addBot(`To book professional services, simply email 📧 bovincoholdings@gmail.com or call 📞 087 149 4670. Our team will assist you!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "emergency"){
-    addBot(`Yes! We provide emergency support for critical operational needs. 🚨 Call us immediately if urgent.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "pricing"){
-    addBot(`Pricing depends on the service requested. Please contact our admin team for a detailed quote 📧 admin@bovinco.com`);
-    showSuggestions(["services","contact","faq"]);
-  }
-}
-
-// SHOW DYNAMIC SUGGESTIONS
-function showSuggestions(options){
-  suggestions.innerHTML = "";
-  const map = {
-    services:"Services",
-    location:"Location",
-    contact:"Contact",
-    faq:"FAQ",
-    hours:"Operating Hours",
-    ppe:"Request PPE",
-    book:"Book Services",
-    emergency:"Emergency Support",
-    pricing:"Pricing"
-  };
-
-  options.forEach(opt=>{
-    let btn = document.createElement("button");
-    btn.innerHTML = map[opt];
-    btn.onclick = ()=>send(opt);
-    suggestions.appendChild(btn);
-  });
-}
-
-// MESSAGE FUNCTIONS
-function addBot(text){
-  body.innerHTML += `<div class="bot">${text}</div>`;
-  body.scrollTop = body.scrollHeight;
-}
-
-function addUser(text){
-  body.innerHTML += `<div class="user">${text}</div>`;
-}
-</script>
 <footer>
-  © 2026 Bovinco Holdings |
-  <a href="privacy.html">Privacy Policy</a> |
-  <a href="terms.html">Terms of Use</a><br>
-  Powered by BlackLogic Technologies Pty Ltd
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Protocol</a>
+    <a href="terms.html">Usage Terms</a>
+    <a href="contact.html">Compliance</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 Bovinco Holdings | Powered by BlackLogic Technologies
+  </div>
 </footer>
 
 <script>
@@ -471,6 +291,19 @@ const drawer = document.getElementById("drawer");
 
 toggle.addEventListener("click", () => {
   drawer.classList.toggle("open");
+  const icon = toggle.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
+});
+
+// Close drawer when clicking outside
+document.addEventListener('click', (e) => {
+  if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
+    drawer.classList.remove('open');
+    const icon = toggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  }
 });
 </script>
 

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bonvinco Holdings | Contact Us</title>
+<title>Contact | Bonvinco Holdings</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #0b1c2d;
-  --deep-navy: #001633;
-  --sky: #7ecbff;
-  --gold: #FFD700;
-  --glass: rgba(255,255,255,0.08);
+  --accent: #00d4ff; /* Tactical Cyan */
+  --bg-dark: #050505; /* Pure Black */
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-dim: #888;
 }
 
 * {
@@ -22,112 +23,132 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #001f3f, #000814);
-  color: #fff;
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  line-height: 1.6;
 }
 
-/* ================= Drawer Toggle ================= */
+/* ================= Drawer Navigation ================= */
 .drawer-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 25px;
   z-index: 10000;
-  background: rgba(0,31,63,0.9);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 1.3rem;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 12px 15px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* ================= Drawer ================= */
 .drawer {
   position: fixed;
   top: 0;
-  right: -100px;
+  right: -280px;
   height: 100%;
-  width: 100px;
-  background: rgba(0,22,51,0.98);
+  width: 280px;
+  background: rgba(5, 5, 5, 0.98);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  gap: 30px;
+  padding: 100px 40px;
+  gap: 25px;
   z-index: 9999;
-  box-shadow: -6px 0 25px rgba(0,0,0,0.6);
+  border-left: 1px solid var(--border);
+  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.drawer.open {
-  right: 0;
-}
+.drawer.open { right: 0; }
 
 .drawer-item {
-  color: var(--gold);
+  color: #fff;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 15px;
+  transition: 0.3s;
 }
 
-.drawer-item i {
-  font-size: 1.7rem;
-  margin-bottom: 6px;
-}
+.drawer-item i { color: var(--accent); }
 
 /* ================= HERO ================= */
 .hero {
-  height: 45vh;
+  height: 50vh;
   background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    linear-gradient(to bottom, rgba(5,5,5,0.4), var(--bg-dark)),
     url("call.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+}
+
+/* Grid Overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle, black, transparent 80%);
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  color: var(--sky);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0;
+  background: linear-gradient(to bottom, #fff, #666);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
 }
 
-/* ================= CONTENT ================= */
+/* ================= CONTAINER & CARDS ================= */
 .container {
-  max-width: 1100px;
-  margin: -70px auto 60px;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: -80px auto 80px;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
 }
 
-/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
+  gap: 30px;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+@media (min-width: 992px) { .grid { grid-template-columns: 1fr 1.2fr; } }
 
-/* ================= CARDS ================= */
 .card {
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 28px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 4px;
+  padding: 50px;
+  border: 1px solid var(--border);
+  transition: 0.3s;
 }
+
+.card:hover { border-color: rgba(255,255,255,0.2); }
 
 .card h2 {
-  color: var(--sky);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin-top: 0;
+  margin-bottom: 30px;
+  color: var(--accent);
 }
 
 /* ================= CONTACT INFO ================= */
@@ -135,71 +156,109 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border);
 }
 
 .info-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #fff;
 }
 
-.info-left i {
-  color: var(--sky);
-}
+.info-left i { color: var(--accent); font-size: 1.1rem; }
 
 .copy-btn {
-  background: none;
+  background: rgba(255,255,255,0.05);
   border: none;
-  color: var(--sky);
+  color: var(--accent);
   cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
+.copy-btn:hover { background: var(--accent); color: var(--bg-dark); }
+
+.address { margin-top: 30px; color: var(--text-dim); font-size: 0.85rem; }
+
 /* ================= FORM ================= */
+.form-group { margin-bottom: 20px; }
+
 label {
-  font-size: 0.85rem;
-  color: var(--sky);
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
 }
 
 input, textarea {
   width: 100%;
-  padding: 10px;
-  margin: 6px 0 15px;
-  border-radius: 6px;
-  border: none;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  padding: 15px;
+  color: white;
   font-family: inherit;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
-button.submit-btn {
-  background: linear-gradient(to right, var(--sky), #4da3ff);
-  color: #000;
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.07);
+}
+
+.submit-btn {
+  background: white;
+  color: black;
   border: none;
-  padding: 12px;
+  padding: 18px;
   width: 100%;
-  font-weight: bold;
-  border-radius: 25px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: 0.4s;
+  margin-top: 10px;
 }
-/* SOCIAL */
-.social-links{
-  display:flex;
-  justify-content:space-around;
-  margin-top:20px;
+
+.submit-btn:hover {
+  background: var(--accent);
+  box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
 }
-.social-links a{
-  color:#fff;
-  font-size:22px;
+
+/* SOCIALS */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
 }
-.social-links a:hover{color:#d4af37;}
+
+.social-links a {
+  color: #444;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.social-links a:hover { color: var(--accent); transform: translateY(-3px); }
 
 /* ================= FOOTER ================= */
 footer {
-  background: var(--deep-navy);
+  padding: 40px;
   text-align: center;
-  padding: 20px;
-  font-size: 0.85rem;
-  color: #ccc;
+  font-size: 0.7rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-top: 1px solid var(--border);
 }
 </style>
 </head>
@@ -207,22 +266,22 @@ footer {
 <body>
 
 <!-- Drawer Toggle -->
-<button id="drawerToggle" class="drawer-toggle" aria-label="Menu">
+<button id="drawerToggle" class="drawer-toggle">
   <i class="fas fa-bars"></i>
 </button>
 
 <!-- Drawer -->
 <nav class="drawer" id="drawer">
-  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i>Home</a>
-  <a href="service.html" class="drawer-item"><i class="fas fa-concierge-bell"></i>Services</a>
-  <a href="about.html" class="drawer-item"><i class="fas fa-info-circle"></i>About</a>
-  <a href="progress.html" class="drawer-item"><i class="fas fa-scale-balanced"></i>Legal</a>
-  <a href="contact.html" class="drawer-item"><i class="fas fa-envelope"></i>Contact</a>
+  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i> Home</a>
+  <a href="service.html" class="drawer-item"><i class="fas fa-cog"></i> Services</a>
+  <a href="about.html" class="drawer-item"><i class="fas fa-shield-alt"></i> About</a>
+  <a href="progress.html" class="drawer-item"><i class="fas fa-file-contract"></i> Legal</a>
+  <a href="contact.html" class="drawer-item"><i class="fas fa-at"></i> Contact</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Contact Bovinco Holdings</h1>
+  <h1>Get In Touch</h1>
 </section>
 
 <!-- CONTENT -->
@@ -231,14 +290,14 @@ footer {
 
     <!-- CONTACT DETAILS -->
     <div class="card">
-      <h2>Reach Us</h2>
+      <h2>Strategic Comms</h2>
 
       <div class="info-item">
         <div class="info-left">
           <i class="fas fa-envelope"></i>
           <span>bovincoholdings@gmail.com</span>
         </div>
-        <button class="copy-btn" onclick="copyText('bonvincotrading@gmail.com')">
+        <button class="copy-btn" onclick="copyText('bovincoholdings@gmail.com')">
           <i class="fas fa-copy"></i>
         </button>
       </div>
@@ -248,7 +307,7 @@ footer {
           <i class="fas fa-user-shield"></i>
           <span>admin@bovinco.com</span>
         </div>
-        <button class="copy-btn" onclick="copyText('admin@bonvinco.com')">
+        <button class="copy-btn" onclick="copyText('admin@bovinco.com')">
           <i class="fas fa-copy"></i>
         </button>
       </div>
@@ -256,7 +315,7 @@ footer {
       <div class="info-item">
         <div class="info-left">
           <i class="fas fa-phone"></i>
-          <span>Ermelo – 087 149 4670</span>
+          <span>Ermelo: 087 149 4670</span>
         </div>
         <button class="copy-btn" onclick="copyText('0871494670')">
           <i class="fas fa-copy"></i>
@@ -266,296 +325,54 @@ footer {
       <div class="info-item">
         <div class="info-left">
           <i class="fas fa-phone"></i>
-          <span>Witbank – 0686911235</span>
+          <span>Witbank: 068 691 1235</span>
         </div>
-        <button class="copy-btn" onclick="copyText('0836217499')">
+        <button class="copy-btn" onclick="copyText('0686911235')">
           <i class="fas fa-copy"></i>
         </button>
       </div>
 
-      <p style="font-size:0.85rem; color:#ccc;">
-          <div class="reach-item">
-    <div class="reach-left">
-      <i class="fas fa-location-dot"></i> 4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034
-    </div>
-  </div>
-      </p>
+      <div class="address">
+        <i class="fas fa-location-dot" style="color: var(--accent); margin-right: 10px;"></i>
+        4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034
+      </div>
     </div>
 
     <!-- FORM -->
     <div class="card">
-      <h2>Send Us a Message</h2>
+      <h2>Submit Enquiry</h2>
 
-      <label>Full Name</label>
-      <input type="text" placeholder="Your name">
+      <div class="form-group">
+        <label>Full Identity</label>
+        <input type="text" placeholder="John Doe">
+      </div>
 
-      <label>Email Address</label>
-      <input type="email" placeholder="Your email">
+      <div class="form-group">
+        <label>Electronic Mail</label>
+        <input type="email" placeholder="john@company.com">
+      </div>
 
-      <label>Contact Number</label>
-      <input type="text" placeholder="Your phone number">
+      <div class="form-group">
+        <label>Message Brief</label>
+        <textarea rows="5" placeholder="Outline your requirements..."></textarea>
+      </div>
 
-      <label>Message</label>
-      <textarea rows="4" placeholder="Write your message"></textarea>
-
-      <button class="submit-btn">Submit Enquiry</button>
+      <button class="submit-btn">Send Transmission</button>
     </div>
 
   </div>
-  <!-- BOVINCO HOLDINGS CHATBOT -->
-<style>
-/* BUTTON */
-#bonvi-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  border:none;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 0 15px #00BFFF;
-}
-
-/* CHAT BOX */
-#bonvi-chat{
-  position:fixed;
-  bottom:90px;
-  right:20px;
-  width:320px;
-  background:#001F3F; /* Navy */
-  border-radius:15px;
-  display:none;
-  flex-direction:column;
-  overflow:hidden;
-  box-shadow:0 0 20px #00BFFF;
-}
-
-/* HEADER */
-.chat-header{
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  padding:10px;
-  font-weight:bold;
-}
-
-/* MESSAGES */
-.chat-body{
-  padding:10px;
-  height:300px;
-  overflow-y:auto;
-}
-
-/* BUBBLES */
-.bot{
-  background:white;
-  color:#001F3F;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-}
-
-.user{
-  background:#00BFFF;
-  color:white;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-  text-align:right;
-}
-
-/* SUGGESTIONS */
-.suggestions{
-  padding:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-}
-
-.suggestions button{
-  background:#00BFFF;
-  border:none;
-  padding:5px 10px;
-  border-radius:10px;
-  color:white;
-  cursor:pointer;
-}
-</style>
-
-<button id="bonvi-btn">💬</button>
-
-<div id="bonvi-chat">
-  <div class="chat-header">✨ Bonvi - Bovinco Holdings</div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="suggestions" id="suggestions">
-    <button onclick="send('services')">Services</button>
-    <button onclick="send('location')">Location</button>
-    <button onclick="send('contact')">Contact</button>
-    <button onclick="send('faq')">FAQ</button>
+  
+  <!-- SOCIAL -->
+  <div class="social-links">
+    <a href="https://www.facebook.com/profile.php?id=61586572542499"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/bovincoholdings"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@bovincoholdings"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/27725938007" target="_blank"><i class="fab fa-whatsapp"></i></a>
   </div>
-</div>
-
-<script>
-const chat = document.getElementById("bonvi-chat");
-const body = document.getElementById("chatBody");
-const suggestions = document.getElementById("suggestions");
-
-document.getElementById("bonvi-btn").onclick = ()=>{
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-  chat.style.flexDirection = "column";
-};
-
-// GREETING
-function greet(){
-  addBot(`Hi 👋 I'm Bonvi, your Bovinco Holdings assistant!<br><br>
-  I’m here to help you explore our services, find our location, or connect with our team.<br><br>
-  How can I help you today?`);
-}
-greet();
-
-// SEND FUNCTION
-function send(type){
-  addUser(type);
-
-if(type === "services"){
-  addBot(`Here are all the services offered by Bovinco Holdings 🛠:<br><br>
-
-<b>Core Operations</b><br>
-Bovinco Holdings delivers reliable, professionally managed services designed to support operational continuity and efficiency.<br><br>
-
-<b>Mining Services</b><br>
-Operational support services tailored to mining environments, ensuring compliance and efficiency.<br><br>
-
-<b>Mining Equipment Supply</b><br>
-Supply of essential tools and equipment supporting daily mining operations.<br><br>
-
-<b>Cleaning Services</b><br>
-Professional cleaning services for commercial, industrial, and domestic facilities.<br><br>
-
-<b>Support & Infrastructure</b><br>
-Essential maintenance, security, and infrastructure support services.<br><br>
-
-<b>Building Maintenance</b><br>
-Preventive and corrective maintenance ensuring safe and functional facilities.<br><br>
-
-<b>Camera Installation</b><br>
-Installation of surveillance systems for enhanced monitoring and safety.<br><br>
-
-<b>Security Services</b><br>
-Professional security personnel and access control solutions.<br><br>
-
-<b>Additional Services</b><br>
-Complementary services supporting workforce safety and operations.<br><br>
-
-<b>Event Management</b><br>
-Structured event coordination and operational support.<br><br>
-
-<b>PPE Supply</b><br>
-Supply of certified personal protective equipment across industries.`);
-  
-  showSuggestions(["pricing","book","contact","faq"]);
-}
-
-  else if(type === "location"){
-    addBot(`Sure! Here's our location 📍:<br>
-    4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034<br><br>
-    <img src="map.jpg" alt="Bovinco Location" style="width:100%;border-radius:10px;">`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "contact"){
-    addBot(`Of course! You can reach Bovinco Holdings on socials or email us:<br><br>
-    📧 bovincoholdings@gmail.com<br>
-    📧 admin@bovinco.com<br><br>
-    Ermelo – 087 149 4670<br>
-    Witbank – 068 691 1235`);
-    showSuggestions(["location","services","faq"]);
-  }
-
-  else if(type === "faq"){
-    addBot(`Here are some frequently asked questions 🤔:<br><br>
-    1️⃣ What are your operating hours?<br>
-    2️⃣ How do I request PPE?<br>
-    3️⃣ How do I book professional services?<br>
-    4️⃣ Do you provide emergency support?<br><br>
-    Click a question to see the answer.`);
-    showSuggestions(["hours","ppe","book","emergency"]);
-  }
-
-  else if(type === "hours"){
-    addBot(`🕘 We operate Monday to Friday, 8am to 5pm. For emergencies, we are available 24/7!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "ppe"){
-    addBot(`To request PPE supplies, contact our admin via 📧 admin@bovinco.com or call 📞 087 149 4670. We'll guide you step by step.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "book"){
-    addBot(`To book professional services, simply email 📧 bovincoholdings@gmail.com or call 📞 087 149 4670. Our team will assist you!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "emergency"){
-    addBot(`Yes! We provide emergency support for critical operational needs. 🚨 Call us immediately if urgent.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "pricing"){
-    addBot(`Pricing depends on the service requested. Please contact our admin team for a detailed quote 📧 admin@bovinco.com`);
-    showSuggestions(["services","contact","faq"]);
-  }
-}
-
-// SHOW DYNAMIC SUGGESTIONS
-function showSuggestions(options){
-  suggestions.innerHTML = "";
-  const map = {
-    services:"Services",
-    location:"Location",
-    contact:"Contact",
-    faq:"FAQ",
-    hours:"Operating Hours",
-    ppe:"Request PPE",
-    book:"Book Services",
-    emergency:"Emergency Support",
-    pricing:"Pricing"
-  };
-
-  options.forEach(opt=>{
-    let btn = document.createElement("button");
-    btn.innerHTML = map[opt];
-    btn.onclick = ()=>send(opt);
-    suggestions.appendChild(btn);
-  });
-}
-
-// MESSAGE FUNCTIONS
-function addBot(text){
-  body.innerHTML += `<div class="bot">${text}</div>`;
-  body.scrollTop = body.scrollHeight;
-}
-
-function addUser(text){
-  body.innerHTML += `<div class="user">${text}</div>`;
-}
-</script>
-  
-<!-- SOCIAL -->
-<div class="social-links">
-  <a href="https://www.facebook.com/profile.php?id=61586572542499"><i class="fab fa-facebook"></i></a>
-  <a href="https://www.instagram.com/bovincoholdings"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@bovincoholdings"><i class="fab fa-tiktok"></i></a>
-  <a href="https://wa.me/27725938007" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
 </section>
 
 <footer>
-  © 2026 Bovinco Holdings | Powered by BlackLogic Technologies Pty Ltd
+  &copy; 2026 Bovinco Holdings | Engineered by BlackLogic Technologies
 </footer>
 
 <script>
@@ -564,12 +381,24 @@ const drawer = document.getElementById("drawer");
 
 toggle.addEventListener("click", () => {
   drawer.classList.toggle("open");
+  const icon = toggle.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
 });
 
 function copyText(text) {
   navigator.clipboard.writeText(text);
-  alert("Copied: " + text);
+  // Custom toast logic could go here
 }
+
+document.addEventListener('click', (e) => {
+  if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
+    drawer.classList.remove('open');
+    const icon = toggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  }
+});
 </script>
 
 </body>

@@ -1,4 +1,4 @@
-y<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -6,94 +6,90 @@ y<!DOCTYPE html>
 <title>Services | Bonvinco Holdings</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #001f3f;
-  --deep-navy: #001633;
-  --sky: #7ecbff;
-  --gold: #FFD700;
-  --glass: rgba(255,255,255,0.08);
+  --accent: #00d4ff; /* Tactical Cyan from main site */
+  --bg-dark: #050505; /* Deep Black */
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-dim: #888;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #001f3f, #000814);
-  color: #e6f2ff;
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  line-height: 1.6;
 }
 
-/* ================= Drawer Toggle ================= */
+/* ================= Drawer Navigation ================= */
 .drawer-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 25px;
   z-index: 10000;
-  background: rgba(0,31,63,0.9);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 1.3rem;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 12px 15px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* ================= Drawer ================= */
+.drawer-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .drawer {
   position: fixed;
   top: 0;
-  right: -110px;
+  right: -280px;
   height: 100%;
-  width: 110px;
-  background: rgba(0,22,51,0.98);
+  width: 280px;
+  background: rgba(5, 5, 5, 0.98);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  gap: 30px;
+  padding: 100px 40px;
+  gap: 25px;
   z-index: 9999;
-  box-shadow: -6px 0 25px rgba(0,0,0,0.6);
-  transition: 0.3s ease;
+  border-left: 1px solid var(--border);
+  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .drawer.open { right: 0; }
 
 .drawer-item {
-  color: var(--gold);
+  color: #fff;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 15px;
   transition: 0.3s;
 }
 
-.drawer-item:hover {
-  transform: scale(1.1);
-  color: var(--sky);
-}
-
-.drawer-item i {
-  font-size: 1.7rem;
-  margin-bottom: 6px;
-}
-
-/* Highlight Explore Button */
-.drawer-item:last-child {
-  background: var(--sky);
-  color: #001f3f;
-  border-radius: 10px;
-  padding: 8px;
-}
+.drawer-item i { color: var(--accent); width: 20px; }
+.drawer-item:hover { color: var(--accent); transform: translateX(5px); }
 
 /* ================= HERO ================= */
 .hero {
-  height: 55vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+  height: 60vh;
+  background: 
+    linear-gradient(to bottom, rgba(5,5,5,0.2), var(--bg-dark)),
     url("build.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -102,391 +98,236 @@ body {
   position: relative;
 }
 
+/* Tactical Grid Overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
+}
+
 .hero h1 {
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  color: var(--sky);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0;
+  background: linear-gradient(to bottom, #fff, #666);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
   margin-top: 10px;
-  color: #cfe9ff;
-  font-size: 1.05rem;
 }
 
-/* Explore Button */
-.explore-btn {
-  margin-top: 20px;
-  display: inline-block;
-  background: var(--sky);
-  color: #001f3f;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.explore-btn:hover {
-  transform: scale(1.05);
-  background: #9fdcff;
-}
-
-/* ================= SECTION ================= */
+/* ================= SECTIONS ================= */
 .section {
-  max-width: 1100px;
-  margin: -70px auto 60px;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 30px;
 }
-
-.section + .section { margin-top: 40px; }
 
 .section-title {
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
 }
 
 .section-title h2 {
-  color: var(--sky);
-  font-size: 1.9rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
 }
 
 .section-title p {
-  max-width: 780px;
-  margin: 12px auto 0;
-  color: #c7def2;
-  line-height: 1.6;
-}
-
-/* ================= GRID ================= */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  color: var(--text-dim);
+  max-width: 600px;
+  font-size: 0.95rem;
 }
 
 /* ================= CARDS ================= */
-.card {
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 30px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: 0.4s;
+  transform-origin: left;
+}
+
+.card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-5px);
+}
+
+.card:hover::before { transform: scaleX(1); }
 
 .card i {
-  font-size: 2rem;
-  color: var(--sky);
-  margin-bottom: 16px;
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 20px;
 }
 
-.card h3 { margin: 0 0 10px; }
+.card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .card p {
-  font-size: 0.95rem;
-  color: #d6e9ff;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
 }
 
 /* ================= STRIP ================= */
 .strip {
-  background: var(--deep-navy);
-  padding: 55px 20px;
+  background: #0a0a0a;
+  padding: 80px 20px;
   text-align: center;
+  border-top: 1px solid var(--border);
 }
 
 .strip h3 {
-  font-size: 1.8rem;
-  color: var(--sky);
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 20px;
 }
 
-/* ================= FOOTER ================= */
+.strip p {
+  color: var(--text-dim);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 footer {
-  background: #041423;
+  padding: 40px;
   text-align: center;
-  padding: 18px;
-  font-size: 0.85rem;
-  color: #9fbfdc;
+  font-size: 0.7rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-top: 1px solid var(--border);
 }
 </style>
 </head>
 
 <body>
 
+<!-- Drawer Toggle -->
 <button id="drawerToggle" class="drawer-toggle">
   <i class="fas fa-bars"></i>
 </button>
 
+<!-- Drawer -->
 <nav class="drawer" id="drawer">
-  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i>Home</a>
-  <a href="service.html" class="drawer-item"><i class="fas fa-concierge-bell"></i>Services</a>
-  <a href="about.html" class="drawer-item"><i class="fas fa-info-circle"></i>About</a>
-  <a href="progress.html" class="drawer-item"><i class="fas fa-scale-balanced"></i>Legal</a>
-  <a href="contact.html" class="drawer-item"><i class="fas fa-envelope"></i>Contact</a>
-
-  <!-- Explore -->
-  <a href="https://bovincogallery.netlify.app/" class="drawer-item">
-    <i class="fas fa-images"></i>Explore
-  </a>
+  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i> Home</a>
+  <a href="service.html" class="drawer-item"><i class="fas fa-cog"></i> Services</a>
+  <a href="about.html" class="drawer-item"><i class="fas fa-shield-alt"></i> About</a>
+  <a href="progress.html" class="drawer-item"><i class="fas fa-file-contract"></i> Legal</a>
+  <a href="contact.html" class="drawer-item"><i class="fas fa-at"></i> Contact</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div>
+    <p>Strategic Infrastructure</p>
     <h1>Our Services</h1>
-    <p>Structured Solutions Across Multiple Industries</p>
-
-    <!-- FIXED BUTTON -->
-    <a href="https://blacklogic-dev.github.io/bovi/" class="explore-btn">
-      <i class="fas fa-images"></i> Explore Gallery
-    </a>
   </div>
 </section>
 
-<!-- (Rest of your sections unchanged) --><div class="grid"> <div class="card"> <i class="fas fa-industry"></i> <h3>Mining Services</h3> <p> Operational support services tailored to mining environments, ensuring compliance and efficiency. </p> </div> <div class="card"> <i class="fas fa-truck-ramp-box"></i> <h3>Mining Equipment Supply</h3> <p> Supply of essential tools and equipment supporting daily mining operations. </p> </div> <div class="card"> <i class="fas fa-broom"></i> <h3>Cleaning Services</h3> <p> Professional cleaning services for commercial, industrial, and domestic facilities. </p> </div> </div> </section> <!-- SUPPORT SERVICES --> <section class="section"> <div class="section-title"> <h2>Support & Infrastructure</h2> <p> Essential maintenance, security, and infrastructure support services. </p> </div> <div class="grid"> <div class="card"> <i class="fas fa-tools"></i> <h3>Building Maintenance</h3> <p> Preventive and corrective maintenance ensuring safe and functional facilities. </p> </div> <div class="card"> <i class="fas fa-video"></i> <h3>Camera Installation</h3> <p> Installation of surveillance systems for enhanced monitoring and safety. </p> </div> <div class="card"> <i class="fas fa-shield-halved"></i> <h3>Security Services</h3> <p> Professional security personnel and access control solutions. </p> </div> </div> </section> <!-- ADDITIONAL --> <section class="section"> <div class="section-title"> <h2>Additional Services</h2> <p> Complementary services supporting workforce safety and operations. </p> </div> <div class="grid"> <div class="card"> <i class="fas fa-calendar-check"></i> <h3>Event Management</h3> <p> Structured event coordination and operational support. </p> </div> <div class="card"> <i class="fas fa-helmet-safety"></i> <h3>PPE Supply</h3> <p> Supply of certified personal protective equipment across industries. </p> </div> </div> </section> <section class="strip"> <h3>Professional Services You Can Rely On</h3> <p> Bonvinco Holdings is committed to quality service delivery, accountability, and long-term partnerships. </p> </section>
-<!-- BOVINCO HOLDINGS CHATBOT -->
-<style>
-/* BUTTON */
-#bonvi-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  border:none;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 0 15px #00BFFF;
-}
-
-/* CHAT BOX */
-#bonvi-chat{
-  position:fixed;
-  bottom:90px;
-  right:20px;
-  width:320px;
-  background:#001F3F; /* Navy */
-  border-radius:15px;
-  display:none;
-  flex-direction:column;
-  overflow:hidden;
-  box-shadow:0 0 20px #00BFFF;
-}
-
-/* HEADER */
-.chat-header{
-  background:#00BFFF; /* Electric Sky Blue */
-  color:white;
-  padding:10px;
-  font-weight:bold;
-}
-
-/* MESSAGES */
-.chat-body{
-  padding:10px;
-  height:300px;
-  overflow-y:auto;
-}
-
-/* BUBBLES */
-.bot{
-  background:white;
-  color:#001F3F;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-}
-
-.user{
-  background:#00BFFF;
-  color:white;
-  padding:8px;
-  border-radius:10px;
-  margin:5px 0;
-  text-align:right;
-}
-
-/* SUGGESTIONS */
-.suggestions{
-  padding:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-}
-
-.suggestions button{
-  background:#00BFFF;
-  border:none;
-  padding:5px 10px;
-  border-radius:10px;
-  color:white;
-  cursor:pointer;
-}
-</style>
-
-<button id="bonvi-btn">💬</button>
-
-<div id="bonvi-chat">
-  <div class="chat-header">✨ Bonvi - Bovinco Holdings</div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="suggestions" id="suggestions">
-    <button onclick="send('services')">Services</button>
-    <button onclick="send('location')">Location</button>
-    <button onclick="send('contact')">Contact</button>
-    <button onclick="send('faq')">FAQ</button>
+<!-- CORE OPERATIONS -->
+<section class="section">
+  <div class="section-title">
+    <h2>Core Operations</h2>
+    <p>Professional management designed for high-stakes operational continuity.</p>
   </div>
-</div>
 
-<script>
-const chat = document.getElementById("bonvi-chat");
-const body = document.getElementById("chatBody");
-const suggestions = document.getElementById("suggestions");
+  <div class="grid">
+    <div class="card">
+      <i class="fas fa-industry"></i>
+      <h3>Mining Services</h3>
+      <p>Precision operational support and compliance management for heavy industry environments.</p>
+    </div>
 
-document.getElementById("bonvi-btn").onclick = ()=>{
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-  chat.style.flexDirection = "column";
-};
+    <div class="card">
+      <i class="fas fa-truck-loading"></i>
+      <h3>Equipment Supply</h3>
+      <p>Logistics and procurement of mission-critical mining tools and heavy machinery.</p>
+    </div>
 
-// GREETING
-function greet(){
-  addBot(`Hi 👋 I'm Bonvi, your Bovinco Holdings assistant!<br><br>
-  I’m here to help you explore our services, find our location, or connect with our team.<br><br>
-  How can I help you today?`);
-}
-greet();
+    <div class="card">
+      <i class="fas fa-broom"></i>
+      <h3>Industrial Cleaning</h3>
+      <p>Specialized maintenance for commercial, industrial, and high-security domestic facilities.</p>
+    </div>
+  </div>
+</section>
 
-// SEND FUNCTION
-function send(type){
-  addUser(type);
+<!-- SUPPORT -->
+<section class="section">
+  <div class="section-title">
+    <h2>Infrastructure & Security</h2>
+    <p>Protecting assets through advanced surveillance and structural maintenance.</p>
+  </div>
 
-if(type === "services"){
-  addBot(`Here are all the services offered by Bovinco Holdings 🛠:<br><br>
+  <div class="grid">
+    <div class="card">
+      <i class="fas fa-tools"></i>
+      <h3>Building Maintenance</h3>
+      <p>Corrective and preventive structural care ensuring maximum facility uptime.</p>
+    </div>
 
-<b>Core Operations</b><br>
-Bovinco Holdings delivers reliable, professionally managed services designed to support operational continuity and efficiency.<br><br>
+    <div class="card">
+      <i class="fas fa-video"></i>
+      <h3>Surveillance Systems</h3>
+      <p>Next-gen camera installation and real-time monitoring for asset protection.</p>
+    </div>
 
-<b>Mining Services</b><br>
-Operational support services tailored to mining environments, ensuring compliance and efficiency.<br><br>
+    <div class="card">
+      <i class="fas fa-user-shield"></i>
+      <h3>Tactical Security</h3>
+      <p>Elite personnel and intelligent access control solutions for sensitive sites.</p>
+    </div>
+  </div>
+</section>
 
-<b>Mining Equipment Supply</b><br>
-Supply of essential tools and equipment supporting daily mining operations.<br><br>
+<section class="strip">
+  <h3>Scalable Solutions. Proven Results.</h3>
+  <p>Bovinco Holdings integrates industry expertise with technological precision to deliver unmatched reliability.</p>
+</section>
 
-<b>Cleaning Services</b><br>
-Professional cleaning services for commercial, industrial, and domestic facilities.<br><br>
-
-<b>Support & Infrastructure</b><br>
-Essential maintenance, security, and infrastructure support services.<br><br>
-
-<b>Building Maintenance</b><br>
-Preventive and corrective maintenance ensuring safe and functional facilities.<br><br>
-
-<b>Camera Installation</b><br>
-Installation of surveillance systems for enhanced monitoring and safety.<br><br>
-
-<b>Security Services</b><br>
-Professional security personnel and access control solutions.<br><br>
-
-<b>Additional Services</b><br>
-Complementary services supporting workforce safety and operations.<br><br>
-
-<b>Event Management</b><br>
-Structured event coordination and operational support.<br><br>
-
-<b>PPE Supply</b><br>
-Supply of certified personal protective equipment across industries.`);
-  
-  showSuggestions(["pricing","book","contact","faq"]);
-}
-
-  else if(type === "location"){
-    addBot(`Sure! Here's our location 📍:<br>
-    4b, 9 Corridor Cres, Ben Fleur, eMalahleni, 1034<br><br>
-    <img src="map.jpg" alt="Bovinco Location" style="width:100%;border-radius:10px;">`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "contact"){
-    addBot(`Of course! You can reach Bovinco Holdings on socials or email us:<br><br>
-    📧 bovincoholdings@gmail.com<br>
-    📧 admin@bovinco.com<br><br>
-    Ermelo – 087 149 4670<br>
-    Witbank – 068 691 1235`);
-    showSuggestions(["location","services","faq"]);
-  }
-
-  else if(type === "faq"){
-    addBot(`Here are some frequently asked questions 🤔:<br><br>
-    1️⃣ What are your operating hours?<br>
-    2️⃣ How do I request PPE?<br>
-    3️⃣ How do I book professional services?<br>
-    4️⃣ Do you provide emergency support?<br><br>
-    Click a question to see the answer.`);
-    showSuggestions(["hours","ppe","book","emergency"]);
-  }
-
-  else if(type === "hours"){
-    addBot(`🕘 We operate Monday to Friday, 8am to 5pm. For emergencies, we are available 24/7!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "ppe"){
-    addBot(`To request PPE supplies, contact our admin via 📧 admin@bovinco.com or call 📞 087 149 4670. We'll guide you step by step.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "book"){
-    addBot(`To book professional services, simply email 📧 bovincoholdings@gmail.com or call 📞 087 149 4670. Our team will assist you!`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "emergency"){
-    addBot(`Yes! We provide emergency support for critical operational needs. 🚨 Call us immediately if urgent.`);
-    showSuggestions(["services","contact","faq"]);
-  }
-
-  else if(type === "pricing"){
-    addBot(`Pricing depends on the service requested. Please contact our admin team for a detailed quote 📧 admin@bovinco.com`);
-    showSuggestions(["services","contact","faq"]);
-  }
-}
-
-// SHOW DYNAMIC SUGGESTIONS
-function showSuggestions(options){
-  suggestions.innerHTML = "";
-  const map = {
-    services:"Services",
-    location:"Location",
-    contact:"Contact",
-    faq:"FAQ",
-    hours:"Operating Hours",
-    ppe:"Request PPE",
-    book:"Book Services",
-    emergency:"Emergency Support",
-    pricing:"Pricing"
-  };
-
-  options.forEach(opt=>{
-    let btn = document.createElement("button");
-    btn.innerHTML = map[opt];
-    btn.onclick = ()=>send(opt);
-    suggestions.appendChild(btn);
-  });
-}
-
-// MESSAGE FUNCTIONS
-function addBot(text){
-  body.innerHTML += `<div class="bot">${text}</div>`;
-  body.scrollTop = body.scrollHeight;
-}
-
-function addUser(text){
-  body.innerHTML += `<div class="user">${text}</div>`;
-}
-                    </script>
 <footer>
-  © 2026 Bonvinco Holdings | Powered by BlackLogic Technologies
+  &copy; 2026 Bovinco Holdings | Powered by BlackLogic Technologies
 </footer>
 
 <script>
@@ -495,6 +336,19 @@ const drawer = document.getElementById("drawer");
 
 toggle.addEventListener("click", () => {
   drawer.classList.toggle("open");
+  const icon = toggle.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
+});
+
+// Close drawer when clicking outside
+document.addEventListener('click', (e) => {
+  if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
+    drawer.classList.remove('open');
+    const icon = toggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  }
 });
 </script>
 

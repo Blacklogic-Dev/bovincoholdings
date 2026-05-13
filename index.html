@@ -3,27 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bonvinco Holdings</title>
+<title>Bonvinco Holdings | Strategic Growth</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-  /* Base */
+  :root {
+    --primary-blue: #4fc3f7;
+    --deep-navy: #0a1a2f;
+    --accent-sky: #81d4fa;
+    --glass: rgba(10, 26, 47, 0.85);
+  }
+
   body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     overflow: hidden;
-    background: #0a1a2f; /* Navy */
+    background: var(--deep-navy);
     color: white;
   }
 
-  /* Landing */
+  /* Enhanced Landing with Background Image */
   .landing {
-    background: linear-gradient(
-      rgba(10,26,47,0.85),
-      rgba(10,26,47,0.85)
-    ),
-    url('office.jpg') no-repeat center/cover;
+    background: linear-gradient(var(--glass), var(--glass)),
+                url('office.jpg') no-repeat center/cover;
     width: 100%;
     height: 100%;
     display: flex;
@@ -34,92 +38,111 @@
     position: relative;
   }
 
-  /* Date & Time */
+  /* HUD-style Date & Time */
   .datetime {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    top: 30px;
+    left: 40px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+    border-left: 2px solid var(--primary-blue);
+    padding-left: 15px;
+    text-align: left;
   }
-  .datetime i { color: #4fc3f7; }
 
-  /* Typewriter */
-  .typewriter h1,
-  .typewriter h2 {
+  /* Refined Hero Text */
+  .hero-container {
+    z-index: 2;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: var(--accent-sky);
+  }
+
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
     margin: 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 0.15em solid #4fc3f7;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px #000;
+    letter-spacing: -1px;
+    color: #ffffff;
   }
 
-  .typewriter h1 {
-    font-size: 2.2rem;
-    color: #4fc3f7; /* Sky Blue */
-  }
-
-  .typewriter h2 {
-    font-size: 2.8rem;
-    color: #81d4fa;
-  }
-
-  .typewriter p {
-    margin-top: 10px;
+  .tagline {
     color: #cfd8dc;
     font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 5px;
   }
 
-  /* Buttons */
+  /* Modern Action Button */
   .buttons {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 
   .discover-btn {
-    padding: 12px 22px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to right, #4fc3f7, #0288d1);
-    color: #02101f;
+    padding: 15px 35px;
+    font-size: 0.85rem;
+    border: 1px solid var(--primary-blue);
+    border-radius: 4px;
+    background: transparent;
+    color: white;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: all 0.4s ease;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: bold;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    gap: 12px;
   }
 
   .discover-btn:hover {
-    transform: scale(1.05);
+    background: var(--primary-blue);
+    color: var(--deep-navy);
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
+    transform: translateY(-2px);
   }
 
-  /* Toggle */
+  /* Dashboard Style Switcher */
   .switch-container {
-    margin-top: 30px;
-    text-align: center;
+    position: absolute;
+    bottom: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 
   .switch-label h3 {
     margin: 0;
-    color: #4fc3f7;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-blue);
   }
 
   .switch-label p {
-    margin: 4px 0 10px;
-    font-size: 0.9rem;
-    color: #b0bec5;
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: #90a4ae;
   }
 
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 26px;
   }
 
   .switch input { display: none; }
@@ -127,7 +150,7 @@
   .slider {
     position: absolute;
     cursor: pointer;
-    background-color: #555;
+    background-color: #334155;
     border-radius: 34px;
     inset: 0;
     transition: .4s;
@@ -136,8 +159,8 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 18px;
+    width: 18px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -146,19 +169,21 @@
   }
 
   input:checked + .slider {
-    background-color: #4fc3f7;
+    background-color: var(--primary-blue);
   }
 
   input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(24px);
   }
 
-  /* Footer */
+  /* Footer Overlay */
   footer {
     position: absolute;
-    bottom: 10px;
-    font-size: 0.8rem;
-    color: #90a4ae;
+    bottom: 15px;
+    font-size: 0.65rem;
+    color: #546e7a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 </style>
 </head>
@@ -166,31 +191,30 @@
 
 <div class="landing">
 
-  <!-- Date & Time -->
+  <!-- HUD Overlay -->
   <div class="datetime">
-    <div><i class="fas fa-calendar-alt"></i> 2026</div>
-    <div><i class="fas fa-clock"></i> <span id="time">--:--:--</span></div>
+    <div><i class="far fa-calendar"></i> <span id="date">2026</span></div>
+    <div><i class="far fa-clock"></i> <span id="time">--:--:--</span></div>
   </div>
 
-  <!-- Hero Text -->
-  <div class="typewriter">
+  <!-- Hero Content -->
+  <div class="hero-container">
     <h1>Welcome To Bovinco</h1>
-    <h2><span id="dynamicText"></span></h2>
-    <p>Strategic Holdings. Intelligent Growth.</p>
+    <h2 id="dynamicText">Holdings Division</h2>
+    <p class="tagline">Strategic Assets & Intelligent Growth</p>
+    
+    <div class="buttons">
+      <button class="discover-btn" onclick="goToService()">
+        Enter Portfolio <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
   </div>
 
-  <!-- Action -->
-  <div class="buttons">
-    <button class="discover-btn" onclick="goToService()">
-      Discover <i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
-
-  <!-- Division Switch -->
+  <!-- Division Switcher -->
   <div class="switch-container">
     <div class="switch-label">
-      <h3>Switch Division</h3>
-      <p>Switch to Bonvinco Tactical Response</p>
+      <h3>Active Division</h3>
+      <p>Switch to Tactical Response</p>
     </div>
     <label class="switch">
       <input type="checkbox" id="divisionSwitch">
@@ -198,49 +222,54 @@
     </label>
   </div>
 
-  <footer>⚡ Powered by BlackLogic Technologies Pty Ltd</footer>
+  <footer>&copy; 2026 Powered by BlackLogic Technologies Pty Ltd</footer>
 </div>
 
 <script>
-  /* Clock */
+  /* Updated Clock with Date */
   function updateTime() {
     const now = new Date();
-    document.getElementById('time').innerText =
-      now.toLocaleTimeString('en-GB');
+    document.getElementById('time').innerText = now.toLocaleTimeString('en-GB', { hour12: false });
+    const options = { day: '2-digit', month: 'short' };
+    document.getElementById('date').innerText = now.toLocaleDateString('en-GB', options).toUpperCase() + ' 2026';
   }
   setInterval(updateTime, 1000);
   updateTime();
 
-  /* Discover */
+  /* Transition Effect */
   function goToService() {
-    const icon = document.querySelector('.discover-btn i');
-    icon.classList.add('fa-spin');
+    const btn = document.querySelector('.discover-btn');
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Initializing';
     setTimeout(() => {
       window.location.href = 'service.html';
-    }, 1200);
+    }, 800);
   }
 
-  /* Toggle */
+  /* Logic Toggle */
   document.getElementById('divisionSwitch').addEventListener('change', e => {
     if(e.target.checked){
       window.location.href = 'https://bonvinco.com/index.html';
     }
   });
 
-  /* Typewriter */
+  /* Smooth Typewriter Effect */
   const text = "Holdings Division";
-  let i = 0, del = false;
+  let i = 0, isDeleting = false;
   const el = document.getElementById('dynamicText');
 
   function type() {
-    el.textContent = del
-      ? text.substring(0, i--)
+    const speed = isDeleting ? 50 : 120;
+    el.textContent = isDeleting 
+      ? text.substring(0, i--) 
       : text.substring(0, i++);
 
-    if (i === text.length + 1) del = true;
-    if (i === 0) del = false;
+    if (!isDeleting && i === text.length + 1) {
+      setTimeout(() => isDeleting = true, 2000); // Pause at end
+    } else if (isDeleting && i === 0) {
+      isDeleting = false;
+    }
 
-    setTimeout(type, del ? 80 : 150);
+    setTimeout(type, speed);
   }
   type();
 </script>
