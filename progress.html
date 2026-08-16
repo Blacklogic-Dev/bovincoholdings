@@ -1,311 +1,1067 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Legal & License | Bonvinco Holdings</title>
+<meta charset="UTF-8">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ================= SEO ================= -->
+<title>Bovinco Holdings License | Legal & Website Infrastructure</title>
+
+<meta name="description"
+content="Official Bovinco Holdings license and legal information covering website infrastructure, intellectual property, user terms, authorized development, and technology partnership with BlackLogic Technologies.">
+
+<meta name="keywords"
+content="Bovinco Holdings, Bovinco Holdings license, Bovinco legal information, Bovinco website license, Bovinco intellectual property, BlackLogic Technologies, Bovinco website infrastructure, South Africa">
+
+<meta name="author"
+content="Bovinco Holdings">
+
+<meta name="robots"
+content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<meta name="googlebot"
+content="index, follow">
+
+<meta name="theme-color" content="#001f3f">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.bovincoholdings.com/progress.html">
+
+
+<!-- ================= OPEN GRAPH ================= -->
+<meta property="og:type" content="website">
+<meta property="og:title"
+content="Bovinco Holdings License | Legal & Website Infrastructure">
+
+<meta property="og:description"
+content="Official licensing, intellectual property, user terms, authorization and technology infrastructure information for Bovinco Holdings.">
+
+<meta property="og:url"
+content="https://www.bovincoholdings.com/progress.html">
+
+<meta property="og:site_name"
+content="Bovinco Holdings">
+
+<meta property="og:image"
+content="https://www.bovincoholdings.com/logo.jpg">
+
+<meta property="og:image:alt"
+content="Bovinco Holdings">
+
+
+<!-- ================= TWITTER / X ================= -->
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title"
+content="Bovinco Holdings License | Legal Information">
+
+<meta name="twitter:description"
+content="Official Bovinco Holdings licensing, intellectual property and website infrastructure information.">
+
+<meta name="twitter:image"
+content="https://www.bovincoholdings.com/logo.jpg">
+
+
+<!-- ================= ICONS ================= -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<!-- ================= STRUCTURED DATA ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Bovinco Holdings License",
+  "url": "https://www.bovincoholdings.com/progress.html",
+  "description": "Official licensing, legal, intellectual property and website infrastructure information for Bovinco Holdings.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Bovinco Holdings",
+    "url": "https://www.bovincoholdings.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bovinco Holdings"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Bovinco Holdings Website License and Legal Infrastructure"
+  }
+}
+</script>
+
 
 <style>
+
 :root {
-  --accent: #00d4ff; /* Tactical Cyan */
-  --bg-dark: #050505; /* Pure Black */
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.1);
-  --text-dim: #888;
+  --navy: #001f3f;
+  --deep-navy: #001633;
+  --darkest: #000814;
+  --gold: #FFD700;
+  --sky: #87CEEB;
+  --glass: rgba(255,255,255,0.08);
+  --glass-hover: rgba(255,255,255,0.12);
+  --border: rgba(255,255,255,0.12);
+  --text: #ffffff;
+  --muted: #c8d5df;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: var(--bg-dark);
-  color: #ffffff;
-  line-height: 1.6;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(135,206,235,0.08), transparent 30%),
+    linear-gradient(135deg, var(--navy), var(--darkest));
+  color: var(--text);
+  min-height: 100vh;
 }
 
-/* ================= Drawer Navigation ================= */
+
+/* ================= ACCESSIBILITY ================= */
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+
+/* ================= DRAWER TOGGLE ================= */
+
 .drawer-toggle {
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 20px;
+  right: 20px;
   z-index: 10000;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 12px 15px;
-  border-radius: 4px;
+
+  width: 50px;
+  height: 50px;
+
+  background: rgba(0,31,63,0.95);
+
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+
+  color: var(--gold);
+  font-size: 1.3rem;
+
   cursor: pointer;
-  transition: 0.3s;
-}
 
-.drawer {
-  position: fixed;
-  top: 0;
-  right: -280px;
-  height: 100%;
-  width: 280px;
-  background: rgba(5, 5, 5, 0.98);
-  display: flex;
-  flex-direction: column;
-  padding: 100px 40px;
-  gap: 25px;
-  z-index: 9999;
-  border-left: 1px solid var(--border);
-  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.drawer.open { right: 0; }
-
-.drawer-item {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  transition: 0.3s;
-}
-
-.drawer-item i { color: var(--accent); }
-
-/* ================= BANNER ================= */
-.banner {
-  height: 45vh;
-  background: 
-    linear-gradient(to bottom, rgba(5,5,5,0.2), var(--bg-dark)),
-    url("logo.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.drawer-toggle:hover {
+  transform: translateY(-2px);
+  background: rgba(255,215,0,0.12);
+}
+
+
+/* ================= DRAWER ================= */
+
+.drawer {
+  position: fixed;
+
+  top: 0;
+  right: -320px;
+
+  height: 100%;
+  width: 300px;
+
+  background: rgba(0,22,51,0.98);
+
+  backdrop-filter: blur(18px);
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 90px;
+
+  gap: 8px;
+
+  z-index: 9999;
+
+  box-shadow: -10px 0 35px rgba(0,0,0,0.65);
+
+  border-left: 1px solid rgba(255,215,0,0.15);
+
+  transition:
+    right 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.drawer-item {
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 16px 28px;
+
+  border-left: 3px solid transparent;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.drawer-item i {
+  width: 25px;
   text-align: center;
+  color: var(--gold);
+}
+
+.drawer-item:hover {
+  background: rgba(255,215,0,0.08);
+  color: var(--gold);
+  border-left-color: var(--gold);
+}
+
+
+/* ================= HERO / BANNER ================= */
+
+.banner {
+
+  min-height: 340px;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.58),
+      rgba(0,0,0,0.88)
+    ),
+    url("logo.jpg") center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 80px 20px 100px;
+
   position: relative;
 }
 
-.banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px),
-                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 45px 45px;
-  mask-image: radial-gradient(circle, black, transparent 90%);
+.banner-content {
+  max-width: 850px;
+}
+
+.eyebrow {
+
+  display: inline-block;
+
+  color: var(--gold);
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 15px;
 }
 
 .banner h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: -1px;
+
   margin: 0;
-  z-index: 1;
-  text-transform: uppercase;
+
+  font-size: clamp(2rem, 5vw, 3.4rem);
+
+  line-height: 1.1;
+
+  color: var(--gold);
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,0.7);
 }
 
+.banner p {
+
+  max-width: 700px;
+
+  margin: 18px auto 0;
+
+  color: #e1edf5;
+
+  font-size: 1.05rem;
+
+  line-height: 1.7;
+}
+
+
 /* ================= CONTENT ================= */
+
 .content {
-  max-width: 1200px;
-  margin: -60px auto 100px;
-  padding: 0 30px;
+
+  max-width: 1100px;
+
+  margin: -70px auto 70px;
+
+  padding: 0 20px;
+
   position: relative;
+
   z-index: 2;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+
+/* ================= INTRO ================= */
+
+.legal-intro {
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.04)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  margin-bottom: 25px;
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.4);
 }
 
+.legal-intro h2 {
+
+  margin-top: 0;
+
+  color: var(--sky);
+
+  font-size: 1.4rem;
+}
+
+.legal-intro p {
+
+  color: var(--muted);
+
+  line-height: 1.8;
+
+  margin-bottom: 0;
+}
+
+
+/* ================= GRID ================= */
+
+.grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 24px;
+}
+
+
+/* ================= CARDS ================= */
+
 .card {
-  background: var(--card-bg);
-  backdrop-filter: blur(15px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.045)
+    );
+
+  backdrop-filter: blur(16px);
+
+  border-radius: 20px;
+
+  padding: 30px;
+
   border: 1px solid var(--border);
-  padding: 40px;
-  border-radius: 4px;
-  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.42);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
 
 .card:hover {
-  border-color: var(--accent);
-  background: rgba(255,255,255,0.05);
+
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(135,206,235,0.5);
+
+  background:
+    var(--glass-hover);
+}
+
+.card-icon {
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(135,206,235,0.10);
+
+  border: 1px solid rgba(135,206,235,0.2);
+
+  margin-bottom: 20px;
+}
+
+.card-icon i {
+
+  font-size: 1.4rem;
+
+  color: var(--sky);
 }
 
 .card h2 {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent);
+
+  color: var(--sky);
+
   margin-top: 0;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+  margin-bottom: 14px;
+
+  font-size: 1.25rem;
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: var(--text-dim);
+
+  line-height: 1.75;
+
+  color: #e1e8ed;
+
   margin: 0;
 }
 
 .card strong {
-  color: #fff;
-  display: block;
-  margin-top: 10px;
+
+  color: var(--gold);
 }
 
-/* ================= FOOTER ================= */
-footer {
-  background: #000;
-  padding: 60px 20px;
+
+/* ================= LEGAL NOTICE ================= */
+
+.legal-notice {
+
+  margin-top: 25px;
+
+  padding: 25px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,215,0,0.05);
+
+  border:
+    1px solid rgba(255,215,0,0.20);
+
   text-align: center;
-  border-top: 1px solid var(--border);
+}
+
+.legal-notice i {
+
+  color: var(--gold);
+
+  margin-right: 8px;
+}
+
+.legal-notice p {
+
+  margin: 0;
+
+  color: #d8e2e8;
+
+  line-height: 1.7;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--deep-navy),
+      #020b14
+    );
+
+  text-align: center;
+
+  padding: 30px 20px;
+
+  font-size: 0.85rem;
+
+  color: #b7c5ce;
+
+  border-top:
+    1px solid rgba(255,255,255,0.08);
 }
 
 footer a {
-  color: var(--accent);
+
+  color: var(--sky);
+
   text-decoration: none;
-  font-size: 0.75rem;
-  margin: 0 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+
+  margin: 0 7px;
+
+  transition: color 0.25s ease;
 }
 
-.footer-copy {
-  margin-top: 25px;
-  font-size: 0.7rem;
-  color: #444;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+footer a:hover {
+
+  color: var(--gold);
+
+  text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .banner { height: 35vh; }
+.footer-brand {
+
+  color: var(--gold);
+
+  font-weight: 700;
 }
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+
+  .drawer {
+    width: 270px;
+    right: -290px;
+  }
+
+  .banner {
+
+    min-height: 380px;
+
+    padding:
+      80px 20px
+      120px;
+  }
+
+  .banner h1 {
+    font-size: 2.1rem;
+  }
+
+  .banner p {
+    font-size: 0.95rem;
+  }
+
+  .content {
+
+    margin-top: -80px;
+
+    padding: 0 15px;
+  }
+
+  .legal-intro,
+  .card {
+
+    padding: 24px;
+  }
+
+}
+
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- Drawer Toggle -->
-<button id="drawerToggle" class="drawer-toggle">
-  <i class="fas fa-bars"></i>
+
+<!-- ================= NAVIGATION ================= -->
+
+<button
+  id="drawerToggle"
+  class="drawer-toggle"
+  aria-label="Open navigation menu"
+  aria-controls="drawer"
+  aria-expanded="false">
+
+  <i class="fas fa-bars" aria-hidden="true"></i>
+
 </button>
 
-<!-- Drawer -->
-<nav class="drawer" id="drawer">
-  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i> Home</a>
-  <a href="service.html" class="drawer-item"><i class="fas fa-cog"></i> Services</a>
-  <a href="about.html" class="drawer-item"><i class="fas fa-shield-alt"></i> About</a>
-  <a href="progress.html" class="drawer-item"><i class="fas fa-file-contract"></i> Legal</a>
-  <a href="contact.html" class="drawer-item"><i class="fas fa-at"></i> Contact</a>
+
+<nav
+  class="drawer"
+  id="drawer"
+  aria-label="Main navigation">
+
+  <a href="index.html" class="drawer-item">
+    <i class="fas fa-home" aria-hidden="true"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="service.html" class="drawer-item">
+    <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+    <span>Services</span>
+  </a>
+
+  <a href="about.html" class="drawer-item">
+    <i class="fas fa-info-circle" aria-hidden="true"></i>
+    <span>About</span>
+  </a>
+
+  <a
+    href="progress.html"
+    class="drawer-item"
+    aria-current="page">
+
+    <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+    <span>Legal</span>
+
+  </a>
+
+  <a href="contact.html" class="drawer-item">
+    <i class="fas fa-envelope" aria-hidden="true"></i>
+    <span>Contact</span>
+  </a>
+
 </nav>
 
-<!-- Banner -->
-<section class="banner">
-  <h1>Regulatory Framework</h1>
-</section>
 
-<!-- Content -->
-<section class="content">
-  <div class="grid">
+<!-- ================= HERO ================= -->
 
-    <div class="card">
-      <h2><i class="fas fa-shield-halved"></i> Authorization</h2>
-      <p>
-        Infrastructure developed and authorized by 
-        <strong>BlackLogic Technologies Hardware and Projects Pty Ltd</strong>
-        Registration: 2025/885280/07
-      </p>
-    </div>
+<header class="banner">
 
-    <div class="card">
-      <h2><i class="fas fa-code-branch"></i> Deployment</h2>
-      <p>
-        The Bovinco Modern UI Website Intelligence Infrastructure was engineered 
-        by <strong>BlackLogic Technologies</strong> specifically for 
-        Bovinco Holdings operational requirements.
-      </p>
-    </div>
+  <div class="banner-content">
 
-    <div class="card">
-      <h2><i class="fas fa-scale-balanced"></i> Terms</h2>
-      <p>
-        Usage of this digital asset implies consent to all security protocols. 
-        All systems remain protected under international intellectual property statutes.
-      </p>
-    </div>
+    <span class="eyebrow">
+      Corporate Legal Information
+    </span>
 
-    <div class="card">
-      <h2><i class="fas fa-gavel"></i> Jurisdiction</h2>
-      <p>
-        Unauthorized reproduction or reverse engineering is strictly prohibited 
-        under the laws of the Republic of South Africa.
-      </p>
-    </div>
+    <h1>
+      Bovinco Holdings License
+    </h1>
 
-    <div class="card">
-      <h2><i class="fas fa-microchip"></i> Engineering</h2>
-      <p>
-        <strong>Lead Engineer:</strong> Mr. M.S. Mathebula<br>
-        <strong>Lead Designer:</strong> Quinn Asanda
-      </p>
-    </div>
-
-    <div class="card">
-      <h2><i class="fas fa-copyright"></i> Rights</h2>
-      <p>
-        © 2026 Bovinco Holdings. <br>
-        Digital Infrastructure &copy; BlackLogic Technologies. <br>
-        All rights reserved.
-      </p>
-    </div>
+    <p>
+      Official licensing, authorization, intellectual property,
+      website infrastructure and platform usage information.
+    </p>
 
   </div>
-</section>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="content">
+
+
+  <!-- INTRO -->
+
+  <section
+    class="legal-intro"
+    aria-labelledby="legal-overview">
+
+    <h2 id="legal-overview">
+      Official License & Platform Information
+    </h2>
+
+    <p>
+      This page provides information regarding the authorization,
+      development, technology infrastructure, intellectual property
+      and responsible use of the Bovinco Holdings digital platform.
+    </p>
+
+  </section>
+
+
+  <!-- LEGAL INFORMATION -->
+
+  <section
+    class="grid"
+    aria-label="Bovinco Holdings legal information">
+
+
+    <!-- AUTHORIZED BY -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-building-shield"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        Authorized By
+      </h2>
+
+      <p>
+
+        <strong>
+          BlackLogic Technologies Hardware and Projects Pty Ltd
+        </strong>
+
+        <br><br>
+
+        <strong>Lead Engineer:</strong>
+        Mr. M.S. Mathebula
+
+        <br>
+
+        <strong>Lead Designer:</strong>
+        Quinn Asanda
+
+      </p>
+
+    </article>
+
+
+    <!-- LICENSE -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-file-signature"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        License Statement
+      </h2>
+
+      <p>
+
+        The Bonvinco Modern UI Website Intelligence Infrastructure
+        was created and deployed by BlackLogic Technologies under
+        a formal agreement with Bovinco Holdings.
+
+      </p>
+
+    </article>
+
+
+    <!-- TERMS -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-file-contract"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        User Terms & Conditions
+      </h2>
+
+      <p>
+
+        Users agree to responsible and lawful use of this platform.
+        All content, systems, interfaces and associated digital
+        infrastructure remain protected intellectual property.
+
+      </p>
+
+    </article>
+
+
+    <!-- RIGHTS -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-copyright"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        All Rights Reserved
+      </h2>
+
+      <p>
+
+        Unauthorized reproduction, distribution or use of protected
+        platform content and systems is strictly prohibited under
+        applicable South African law.
+
+      </p>
+
+    </article>
+
+
+    <!-- POWERED BY -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-microchip"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        Technology Infrastructure
+      </h2>
+
+      <p>
+
+        <strong>
+          BlackLogic Technologies
+        </strong>
+
+        <br>
+
+        Hardware and Projects Pty Ltd
+
+        <br><br>
+
+        Responsible for the digital infrastructure,
+        website engineering and technology implementation
+        supporting the Bovinco Holdings platform.
+
+      </p>
+
+    </article>
+
+
+    <!-- DIGITAL PLATFORM -->
+
+    <article class="card">
+
+      <div class="card-icon">
+        <i
+          class="fas fa-globe"
+          aria-hidden="true"></i>
+      </div>
+
+      <h2>
+        Digital Platform
+      </h2>
+
+      <p>
+
+        The Bovinco Holdings website provides digital access
+        to company information, services, operational capabilities,
+        contact channels and corporate resources.
+
+      </p>
+
+    </article>
+
+  </section>
+
+
+  <!-- LEGAL NOTICE -->
+
+  <section
+    class="legal-notice"
+    aria-label="Legal notice">
+
+    <p>
+
+      <i
+        class="fas fa-shield-halved"
+        aria-hidden="true"></i>
+
+      <strong>
+        Legal Notice:
+      </strong>
+
+      Access and use of this platform constitutes acceptance
+      of the applicable terms and responsible-use requirements.
+
+    </p>
+
+  </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Protocol</a>
-    <a href="terms.html">Usage Terms</a>
-    <a href="contact.html">Compliance</a>
+
+  <div>
+
+    © 2026
+    <span class="footer-brand">
+      Bovinco Holdings
+    </span>
+
+    |
+
+    <a href="privacy.html">
+      Privacy Policy
+    </a>
+
+    |
+
+    <a href="terms.html">
+      Terms of Use
+    </a>
+
   </div>
-  <div class="footer-copy">
-    &copy; 2026 Bovinco Holdings | Powered by BlackLogic Technologies
+
+  <div style="margin-top:10px;">
+
+    Powered by
+    <span class="footer-brand">
+      BlackLogic Technologies Pty Ltd
+    </span>
+
   </div>
+
 </footer>
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
-const toggle = document.getElementById("drawerToggle");
-const drawer = document.getElementById("drawer");
+
+const toggle =
+  document.getElementById("drawerToggle");
+
+const drawer =
+  document.getElementById("drawer");
+
 
 toggle.addEventListener("click", () => {
-  drawer.classList.toggle("open");
-  const icon = toggle.querySelector('i');
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-times');
+
+  const isOpen =
+    drawer.classList.toggle("open");
+
+  toggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+  toggle.setAttribute(
+    "aria-label",
+    isOpen
+      ? "Close navigation menu"
+      : "Open navigation menu"
+  );
+
+  toggle.innerHTML = isOpen
+    ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
+    : '<i class="fas fa-bars" aria-hidden="true"></i>';
+
 });
 
-// Close drawer when clicking outside
-document.addEventListener('click', (e) => {
-  if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
-    drawer.classList.remove('open');
-    const icon = toggle.querySelector('i');
-    icon.classList.add('fa-bars');
-    icon.classList.remove('fa-times');
+
+/* Close menu when navigation item is selected */
+
+document
+  .querySelectorAll(".drawer-item")
+  .forEach(item => {
+
+    item.addEventListener("click", () => {
+
+      drawer.classList.remove("open");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      toggle.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+      );
+
+      toggle.innerHTML =
+        '<i class="fas fa-bars" aria-hidden="true"></i>';
+
+    });
+
+  });
+
+
+/* Close drawer with Escape */
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+
+    drawer.classList.remove("open");
+
+    toggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    toggle.setAttribute(
+      "aria-label",
+      "Open navigation menu"
+    );
+
+    toggle.innerHTML =
+      '<i class="fas fa-bars" aria-hidden="true"></i>';
+
   }
+
 });
+
 </script>
+
 
 </body>
 </html>

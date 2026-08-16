@@ -1,364 +1,1208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About | Bonvinco Holdings</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<!-- ================= SEO ================= -->
+<title>About Bovinco Holdings | Integrated Services & Operations</title>
+
+<meta name="description"
+content="Learn about Bovinco Holdings, a multi-service operating company providing mining support, equipment supply, cleaning, maintenance, security, camera installation, event management and PPE supply.">
+
+<meta name="keywords"
+content="Bovinco Holdings, Bovinco, mining services, mining equipment supply, cleaning services, building maintenance, camera installation, security services, event management, PPE supply, South Africa">
+
+<meta name="author" content="Bovinco Holdings">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.bovincoholdings.com/about.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="About Bovinco Holdings">
+<meta property="og:description"
+content="Integrated services, operational support and supply solutions through Bovinco Holdings.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bovincoholdings.com/about.html">
+<meta property="og:image" content="https://www.bovincoholdings.com/logo.jpg">
+
+<!-- Theme -->
+<meta name="theme-color" content="#001f3f">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+
 :root {
-  --accent: #00d4ff; /* Tactical Cyan */
-  --bg-dark: #050505; /* Pure Black */
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.1);
-  --text-dim: #888;
+  --navy: #001f3f;
+  --deep-navy: #000814;
+  --navy-2: #001633;
+  --sky: #7ecbff;
+  --sky-bright: #4fc3f7;
+  --gold: #FFD700;
+
+  --text: #eaf5ff;
+  --muted: #b8cfe0;
+
+  --glass: rgba(255,255,255,0.07);
+  --glass-hover: rgba(255,255,255,0.11);
+
+  --border: rgba(126,203,255,0.16);
+
+  --shadow: 0 20px 50px rgba(0,0,0,0.40);
 }
+
+/* ================= RESET ================= */
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: var(--bg-dark);
-  color: #ffffff;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(79,195,247,0.08), transparent 35%),
+    linear-gradient(135deg, var(--navy), var(--deep-navy));
+  color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* ================= Drawer Navigation ================= */
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ================= NAVIGATION ================= */
+
 .drawer-toggle {
   position: fixed;
-  top: 25px;
-  right: 25px;
-  z-index: 10000;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 12px 15px;
-  border-radius: 4px;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid rgba(255,215,0,0.7);
+  border-radius: 12px;
+
+  background: rgba(0,31,63,0.92);
+  color: var(--gold);
+
+  font-size: 1.25rem;
+
   cursor: pointer;
-  transition: 0.3s;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 }
 
 .drawer-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transform: translateY(-2px);
+  background: rgba(0,31,63,1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 }
+
+.drawer-toggle:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+}
+
+/* ================= DRAWER ================= */
 
 .drawer {
   position: fixed;
   top: 0;
-  right: -280px;
-  height: 100%;
-  width: 280px;
-  background: rgba(5, 5, 5, 0.98);
+  right: -320px;
+
+  width: 300px;
+  height: 100vh;
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(0,22,51,0.99),
+      rgba(0,8,20,0.99)
+    );
+
+  border-left: 1px solid rgba(126,203,255,0.2);
+
+  z-index: 10000;
+
   display: flex;
   flex-direction: column;
-  padding: 100px 40px;
-  gap: 25px;
-  z-index: 9999;
-  border-left: 1px solid var(--border);
-  transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  padding: 90px 18px 30px;
+
+  box-shadow: -20px 0 50px rgba(0,0,0,0.5);
+
+  transition:
+    right .35s cubic-bezier(.4,0,.2,1);
 }
 
-.drawer.open { right: 0; }
+.drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  padding: 0 18px 25px;
+  margin-bottom: 15px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.drawer-header span {
+  display: block;
+
+  color: var(--gold);
+
+  font-size: .75rem;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.drawer-header strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: white;
+
+  font-size: 1.1rem;
+}
 
 .drawer-item {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   display: flex;
   align-items: center;
+
   gap: 15px;
-  transition: 0.3s;
+
+  padding: 15px 18px;
+
+  color: #dceeff;
+
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  font-weight: 600;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
 }
 
-.drawer-item i { color: var(--accent); width: 20px; }
-.drawer-item:hover { color: var(--accent); transform: translateX(5px); }
+.drawer-item i {
+  width: 22px;
 
-/* ================= HERO BANNER ================= */
+  color: var(--sky);
+
+  text-align: center;
+
+  font-size: 1.05rem;
+}
+
+.drawer-item:hover,
+.drawer-item.active {
+  background: rgba(126,203,255,0.08);
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+.drawer-item:hover i,
+.drawer-item.active i {
+  color: var(--gold);
+}
+
+.drawer-item:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+
+/* ================= HERO ================= */
+
 .banner {
-  height: 60vh;
-  background: 
-    linear-gradient(to bottom, rgba(5,5,5,0.4), var(--bg-dark)),
+  min-height: 58vh;
+
+  background:
+    linear-gradient(
+      rgba(0,8,20,0.60),
+      rgba(0,8,20,0.88)
+    ),
     url("logo.jpg") center/cover no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-align: center;
+
+  padding: 100px 20px 120px;
+
   position: relative;
 }
 
-/* Grid Overlay for Tactical feel */
 .banner::after {
   content: "";
+
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px),
-                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle, black, transparent 80%);
-  pointer-events: none;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100px;
+
+  background:
+    linear-gradient(
+      transparent,
+      var(--navy)
+    );
 }
 
-.banner h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: -2px;
-  margin: 0;
-  background: linear-gradient(to bottom, #fff, #777);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  z-index: 1;
-}
+.hero-content {
+  max-width: 850px;
 
-.banner p {
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-top: 10px;
-  z-index: 1;
-}
-
-/* ================= SECTIONS ================= */
-.section {
-  max-width: 1200px;
-  margin: -50px auto 100px;
-  padding: 0 30px;
   position: relative;
   z-index: 2;
 }
 
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(255,215,0,0.35);
+  border-radius: 999px;
+
+  background: rgba(0,31,63,0.55);
+
+  color: var(--gold);
+
+  font-size: .78rem;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(10px);
+}
+
+.banner h1 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 7vw, 4.8rem);
+
+  line-height: 1.05;
+
+  color: white;
+
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 5px 30px rgba(0,0,0,.7);
+}
+
+.banner h1 span {
+  color: var(--sky);
+}
+
+.banner p {
+  max-width: 700px;
+
+  margin: 22px auto 0;
+
+  color: #d9edff;
+
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+/* ================= INTRO ================= */
+
+.section {
+  max-width: 1120px;
+
+  margin: 0 auto 80px;
+
+  padding: 0 20px;
+}
+
+.intro {
+  margin-top: -40px;
+
+  position: relative;
+  z-index: 5;
+}
+
+.intro-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(126,203,255,0.09),
+      rgba(255,255,255,0.04)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: clamp(28px, 5vw, 55px);
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(16px);
+
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+
+  font-size: .75rem;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.intro-card h2 {
+  margin: 10px 0 18px;
+
+  color: var(--sky);
+
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.intro-card p {
+  max-width: 850px;
+
+  margin: auto;
+
+  color: var(--muted);
+
+  font-size: 1.05rem;
+}
+
+/* ================= SECTION HEADINGS ================= */
+
 .section-title {
-  margin-bottom: 60px;
-  border-left: 3px solid var(--accent);
-  padding-left: 20px;
+  text-align: center;
+
+  margin-bottom: 40px;
+}
+
+.section-title .eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
 }
 
 .section-title h2 {
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   margin: 0;
-  color: #fff;
+
+  color: white;
+
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.section-title h2 span {
+  color: var(--sky);
 }
 
 .section-title p {
-  color: var(--text-dim);
-  max-width: 700px;
-  font-size: 1rem;
-  margin-top: 10px;
+  max-width: 760px;
+
+  margin: 12px auto 0;
+
+  color: var(--muted);
 }
 
-/* ================= GRID & CARDS ================= */
+/* ================= CARDS ================= */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 22px;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 45px 35px;
-  border-radius: 4px;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.035)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,.28);
+
   overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sky),
+      var(--gold)
+    );
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform .3s ease;
 }
 
 .card:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: var(--accent);
-  transform: translateY(-8px);
+  transform: translateY(-7px);
+
+  background: var(--glass-hover);
+
+  border-color: rgba(126,203,255,0.35);
+
+  box-shadow:
+    0 22px 45px rgba(0,0,0,.4);
 }
 
-.card i {
-  font-size: 1.8rem;
-  color: var(--accent);
-  margin-bottom: 25px;
-  display: block;
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 14px;
+
+  background: rgba(126,203,255,0.08);
+
+  border: 1px solid rgba(126,203,255,0.14);
+}
+
+.card-icon i {
+  color: var(--sky);
+
+  font-size: 1.45rem;
 }
 
 .card h3 {
-  font-size: 1.1rem;
-  margin: 0 0 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #fff;
+  margin: 0 0 10px;
+
+  color: white;
+
+  font-size: 1.15rem;
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: var(--text-dim);
   margin: 0;
+
+  color: var(--muted);
+
+  font-size: .95rem;
+
+  line-height: 1.7;
 }
 
-/* ================= STRIP ================= */
-.strip {
-  background: #0a0a0a;
-  padding: 100px 20px;
+/* ================= CAPABILITIES ================= */
+
+.capability-section {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,22,51,.85),
+      rgba(0,8,20,.85)
+    );
+
+  border-top: 1px solid rgba(126,203,255,.08);
+  border-bottom: 1px solid rgba(126,203,255,.08);
+
+  padding: 85px 20px;
+}
+
+.capability-inner {
+  max-width: 1120px;
+
+  margin: auto;
+}
+
+.capability-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 18px;
+}
+
+.capability {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.04);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  transition: .25s ease;
+}
+
+.capability:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(126,203,255,.25);
+}
+
+.capability i {
+  color: var(--gold);
+
+  font-size: 1.2rem;
+}
+
+.capability span {
+  color: #dceeff;
+
+  font-weight: 600;
+}
+
+/* ================= CTA ================= */
+
+.cta {
+  max-width: 1000px;
+
+  margin: 90px auto;
+
+  padding: 0 20px;
+}
+
+.cta-box {
+  position: relative;
+
+  overflow: hidden;
+
   text-align: center;
-  border-top: 1px solid var(--border);
+
+  padding: clamp(35px, 6vw, 65px);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #002a52,
+      #00101f
+    );
+
+  border: 1px solid rgba(126,203,255,.2);
+
+  box-shadow: var(--shadow);
 }
 
-.strip h3 {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
+.cta-box::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(79,195,247,.12);
 }
 
-.strip p {
-  color: var(--text-dim);
-  max-width: 750px;
-  margin: 0 auto;
-  font-size: 1.1rem;
+.cta-box h2 {
+  position: relative;
+
+  margin: 0;
+
+  color: var(--sky);
+
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.cta-box p {
+  position: relative;
+
+  max-width: 700px;
+
+  margin: 14px auto 25px;
+
+  color: #cfe9ff;
+}
+
+.cta-btn {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--sky),
+      #0288d1
+    );
+
+  color: #00101f;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  transition: .25s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(79,195,247,.25);
 }
 
 /* ================= FOOTER ================= */
+
 footer {
-  padding: 50px;
+  background: #020c16;
+
+  border-top: 1px solid rgba(255,255,255,.06);
+
   text-align: center;
-  font-size: 0.7rem;
-  color: #444;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-top: 1px solid var(--border);
+
+  padding: 25px 20px;
+
+  color: #8faec5;
+
+  font-size: .82rem;
 }
 
-@media (max-width: 768px) {
-  .section { margin-top: 0; }
-  .banner { height: 45vh; }
+footer strong {
+  color: var(--sky);
 }
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .drawer {
+    width: 280px;
+    right: -280px;
+  }
+
+  .banner {
+    min-height: 60vh;
+
+    padding-top: 90px;
+  }
+
+  .intro {
+    margin-top: -25px;
+  }
+
+  .section {
+    margin-bottom: 60px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .capability-section {
+    padding: 65px 20px;
+  }
+
+  .cta {
+    margin: 65px auto;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- Drawer Toggle -->
-<button id="drawerToggle" class="drawer-toggle">
+<!-- ================= NAVIGATION ================= -->
+
+<button
+  id="drawerToggle"
+  class="drawer-toggle"
+  aria-label="Open navigation menu"
+  aria-controls="drawer"
+  aria-expanded="false">
+
   <i class="fas fa-bars"></i>
+
 </button>
 
-<!-- Drawer -->
-<nav class="drawer" id="drawer">
-  <a href="index.html" class="drawer-item"><i class="fas fa-home"></i> Home</a>
-  <a href="service.html" class="drawer-item"><i class="fas fa-cog"></i> Services</a>
-  <a href="about.html" class="drawer-item"><i class="fas fa-shield-alt"></i> About</a>
-  <a href="progress.html" class="drawer-item"><i class="fas fa-file-contract"></i> Legal</a>
-  <a href="contact.html" class="drawer-item"><i class="fas fa-at"></i> Contact</a>
+<nav
+  class="drawer"
+  id="drawer"
+  aria-label="Main navigation">
+
+  <div class="drawer-header">
+    <span>Bovinco Holdings</span>
+    <strong>Corporate Navigation</strong>
+  </div>
+
+  <a href="index.html" class="drawer-item">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="service.html" class="drawer-item">
+    <i class="fas fa-concierge-bell"></i>
+    <span>Services</span>
+  </a>
+
+  <a href="about.html" class="drawer-item active">
+    <i class="fas fa-info-circle"></i>
+    <span>About</span>
+  </a>
+
+  <a href="progress.html" class="drawer-item">
+    <i class="fas fa-scale-balanced"></i>
+    <span>Legal</span>
+  </a>
+
+  <a href="contact.html" class="drawer-item">
+    <i class="fas fa-envelope"></i>
+    <span>Contact</span>
+  </a>
+
 </nav>
 
-<!-- HERO -->
-<section class="banner">
-  <div>
-    <h1>Bovinco Holdings</h1>
-    <p>Strategic Operations • Global Supply • Security</p>
-  </div>
-</section>
 
-<!-- ABOUT SECTION -->
-<section class="section">
-  <div class="section-title">
-    <h2>Corporate Profile</h2>
+<!-- ================= HERO ================= -->
+
+<header class="banner">
+
+  <div class="hero-content">
+
+    <div class="hero-badge">
+      <i class="fas fa-building"></i>
+      Bovinco Holdings
+    </div>
+
+    <h1>
+      About <span>Bovinco Holdings</span>
+    </h1>
+
     <p>
-      Bovinco Holdings operates as an integrated multi-service corporation, 
-      engineered to deliver compliant, mission-critical solutions across 
-      industrial and commercial sectors.
+      Integrated services, operational support and supply solutions
+      designed to support businesses, industries and communities.
     </p>
+
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <i class="fas fa-industry"></i>
-      <h3>Mining Services</h3>
-      <p>Precision operational support and complex logistics coordination tailored for high-demand environments.</p>
-    </div>
+</header>
 
-    <div class="card">
-      <i class="fas fa-truck-loading"></i>
-      <h3>Equipment Supply</h3>
-      <p>Procurement and distribution of heavy-duty mining apparatus designed to maximize site productivity.</p>
-    </div>
 
-    <div class="card">
-      <i class="fas fa-broom"></i>
-      <h3>Industrial Cleaning</h3>
-      <p>Advanced hygiene protocols for industrial sites, ensuring safety and operational readiness.</p>
-    </div>
+<!-- ================= INTRO ================= -->
+
+<section class="section intro">
+
+  <div class="intro-card">
+
+    <span class="eyebrow">
+      Who We Are
+    </span>
+
+    <h2>
+      A Multi-Service Operating Company
+    </h2>
+
+    <p>
+      Bovinco Holdings is a multi-service operating company providing
+      reliable and professionally managed services across commercial,
+      industrial and public-sector environments. Our service portfolio
+      brings together operational support, supply capabilities,
+      infrastructure services and security-related solutions.
+    </p>
+
   </div>
+
 </section>
 
-<!-- OPERATIONAL SECTION -->
-<section class="section" style="margin-top: 50px;">
+
+<!-- ================= CORE SERVICES ================= -->
+
+<section class="section">
+
   <div class="section-title">
-    <h2>Technical Operations</h2>
-    <p>Leveraging technology and skilled personnel to safeguard and maintain corporate assets.</p>
+
+    <span class="eyebrow">
+      Our Operations
+    </span>
+
+    <h2>
+      Core <span>Capabilities</span>
+    </h2>
+
+    <p>
+      Our capabilities are structured around practical services that
+      support operational efficiency, infrastructure and day-to-day
+      business requirements.
+    </p>
+
   </div>
+
 
   <div class="grid">
-    <div class="card">
-      <i class="fas fa-tools"></i>
+
+    <!-- Mining -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-industry"></i>
+      </div>
+
+      <h3>Mining Services</h3>
+
+      <p>
+        Structured operational support and logistics coordination
+        designed for mining environments and related operational needs.
+      </p>
+
+    </article>
+
+
+    <!-- Equipment -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-truck-ramp-box"></i>
+      </div>
+
+      <h3>Mining Equipment Supply</h3>
+
+      <p>
+        Supply of essential mining equipment, tools and operational
+        resources supporting productivity and site requirements.
+      </p>
+
+    </article>
+
+
+    <!-- Cleaning -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-broom"></i>
+      </div>
+
+      <h3>Cleaning Services</h3>
+
+      <p>
+        Professional cleaning services supporting hygiene, cleanliness
+        and operational readiness across different environments.
+      </p>
+
+    </article>
+
+
+    <!-- Maintenance -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+
       <h3>Building Maintenance</h3>
-      <p>Integrated facility management solutions focusing on structural integrity and compliance.</p>
-    </div>
 
-    <div class="card">
-      <i class="fas fa-video"></i>
-      <h3>Surveillance Tech</h3>
-      <p>Deployment of high-definition surveillance infrastructure for 24/7 operational visibility.</p>
-    </div>
+      <p>
+        General maintenance support focused on keeping facilities
+        functional, maintained and ready for continued use.
+      </p>
 
-    <div class="card">
-      <i class="fas fa-user-shield"></i>
-      <h3>Tactical Security</h3>
-      <p>Sophisticated risk mitigation and protection services for sensitive infrastructure.</p>
-    </div>
+    </article>
+
+
+    <!-- Cameras -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-video"></i>
+      </div>
+
+      <h3>Camera Installation</h3>
+
+      <p>
+        Installation of surveillance camera systems supporting
+        monitoring, visibility and security operations.
+      </p>
+
+    </article>
+
+
+    <!-- Security -->
+    <article class="card">
+
+      <div class="card-icon">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+
+      <h3>Security Services</h3>
+
+      <p>
+        Security solutions focused on protection, monitoring,
+        access management and operational risk reduction.
+      </p>
+
+    </article>
+
   </div>
+
 </section>
 
-<section class="strip">
-  <h3>Proven Reliability. Strategic Growth.</h3>
-  <p>We are committed to establishing long-term operational partnerships built on accountability and excellence.</p>
+
+<!-- ================= ADDITIONAL CAPABILITIES ================= -->
+
+<section class="capability-section">
+
+  <div class="capability-inner">
+
+    <div class="section-title">
+
+      <span class="eyebrow">
+        Additional Capabilities
+      </span>
+
+      <h2>
+        Supporting <span>Operations</span>
+      </h2>
+
+      <p>
+        Complementary services that extend our operational support
+        across different business and workforce requirements.
+      </p>
+
+    </div>
+
+
+    <div class="capability-list">
+
+      <div class="capability">
+        <i class="fas fa-calendar-check"></i>
+        <span>Event Management</span>
+      </div>
+
+      <div class="capability">
+        <i class="fas fa-helmet-safety"></i>
+        <span>PPE Supply</span>
+      </div>
+
+      <div class="capability">
+        <i class="fas fa-truck"></i>
+        <span>Operational Supply</span>
+      </div>
+
+      <div class="capability">
+        <i class="fas fa-gears"></i>
+        <span>Infrastructure Support</span>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+  <div class="cta-box">
+
+    <h2>
+      Looking for a Reliable Service Partner?
+    </h2>
+
+    <p>
+      Connect with Bovinco Holdings to discuss your operational,
+      supply, infrastructure or service requirements.
+    </p>
+
+    <a href="contact.html" class="cta-btn">
+      Contact Bovinco Holdings
+      <i class="fas fa-arrow-right"></i>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
-  &copy; 2026 Bovinco Holdings | Powered by BlackLogic Technologies
+
+  © 2026 Bovinco Holdings.
+  Powered by
+  <strong>
+    BlackLogic Technologies Hardware & Projects Pty Ltd
+  </strong>
+
 </footer>
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
+
 const toggle = document.getElementById("drawerToggle");
 const drawer = document.getElementById("drawer");
 
 toggle.addEventListener("click", () => {
-  drawer.classList.toggle("open");
-  const icon = toggle.querySelector('i');
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-times');
+
+  const isOpen = drawer.classList.toggle("open");
+
+  toggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+  toggle.innerHTML = isOpen
+    ? '<i class="fas fa-times"></i>'
+    : '<i class="fas fa-bars"></i>';
+
 });
 
-// Close drawer when clicking outside
-document.addEventListener('click', (e) => {
-  if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
-    drawer.classList.remove('open');
-    const icon = toggle.querySelector('i');
-    icon.classList.add('fa-bars');
-    icon.classList.remove('fa-times');
+
+/* Close drawer when clicking outside */
+
+document.addEventListener("click", (event) => {
+
+  if (
+    drawer.classList.contains("open") &&
+    !drawer.contains(event.target) &&
+    !toggle.contains(event.target)
+  ) {
+
+    drawer.classList.remove("open");
+
+    toggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    toggle.innerHTML =
+      '<i class="fas fa-bars"></i>';
+
   }
+
 });
+
+
+/* Close drawer after navigation */
+
+document.querySelectorAll(".drawer-item").forEach(item => {
+
+  item.addEventListener("click", () => {
+
+    drawer.classList.remove("open");
+
+    toggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    toggle.innerHTML =
+      '<i class="fas fa-bars"></i>';
+
+  });
+
+});
+
 </script>
 
 </body>
