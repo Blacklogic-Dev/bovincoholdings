@@ -126,6 +126,30 @@
       z-index: -1;
     }
 
+    .landing-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background: rgba(6, 16, 31, 0.8);
+    }
+
+    .landing-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 1.4s ease, transform 1.4s ease;
+      filter: saturate(0.85) contrast(1.05);
+    }
+
+    .landing-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     /* =========================
        TOP STATUS BAR
     ========================== */
@@ -619,6 +643,14 @@
 
   <main class="landing">
 
+    <div class="landing-bg" aria-hidden="true">
+      <div class="landing-slide active"></div>
+      <div class="landing-slide"></div>
+      <div class="landing-slide"></div>
+      <div class="landing-slide"></div>
+      <div class="landing-slide"></div>
+    </div>
+
     <!-- Top Status -->
     <div class="top-status">
 
@@ -835,6 +867,38 @@
 
     typeWriter();
 
+    /* =========================
+       BANNER ROTATOR
+    ========================== */
+
+    const bannerImages = [
+      "bovi5.jpg",
+      "bo6.jpg",
+      "bo4.png",
+      "bovi4.jpg",
+      "bo7.png"
+    ];
+
+    const bannerSlides = document.querySelectorAll(".landing-slide");
+
+    if (bannerSlides.length) {
+      bannerSlides.forEach((slide, index) => {
+        slide.style.backgroundImage =
+          "linear-gradient(135deg, rgba(6, 16, 31, 0.7), rgba(10, 26, 47, 0.75)), url('" +
+          bannerImages[index % bannerImages.length] +
+          "')";
+      });
+
+      let activeSlideIndex = 0;
+
+      setInterval(() => {
+        activeSlideIndex = (activeSlideIndex + 1) % bannerSlides.length;
+
+        bannerSlides.forEach((slide, index) => {
+          slide.classList.toggle("active", index === activeSlideIndex);
+        });
+      }, 3200);
+    }
 
     /* =========================
        KEYBOARD ACCESSIBILITY

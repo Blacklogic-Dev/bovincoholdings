@@ -900,6 +900,10 @@ footer strong {
     right: -300px;
   }
 
+  .drawer.open {
+    right: 0;
+  }
+
   .drawer-toggle {
     width: 46px;
     height: 46px;
@@ -1592,23 +1596,51 @@ footer strong {
    NAVIGATION DRAWER
 ===================================== */
 
-const toggle = document.getElementById("drawerToggle");
-const drawer = document.getElementById("drawer");
+(function () {
+  const toggle = document.getElementById("drawerToggle");
+  const drawer = document.getElementById("drawer");
 
-toggle.addEventListener("click", () => {
+  if (!toggle || !drawer) return;
 
-  const isOpen = drawer.classList.toggle("open");
+  function setDrawerState(open) {
+    drawer.classList.toggle("open", open);
+    drawer.style.right = open ? "0" : "";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
+    );
+    toggle.innerHTML = open
+      ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
+      : '<i class="fas fa-bars" aria-hidden="true"></i>';
+  }
 
-  toggle.setAttribute(
-    "aria-expanded",
-    isOpen ? "true" : "false"
-  );
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setDrawerState(!drawer.classList.contains("open"));
+  });
 
-  toggle.innerHTML = isOpen
-    ? '<i class="fas fa-xmark"></i>'
-    : '<i class="fas fa-bars"></i>';
+  document.addEventListener("click", (event) => {
+    const clickedDrawer = drawer.contains(event.target);
+    const clickedToggle = toggle.contains(event.target);
 
-});
+    if (drawer.classList.contains("open") && !clickedDrawer && !clickedToggle) {
+      setDrawerState(false);
+    }
+  });
+
+  document.querySelectorAll(".drawer-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      setDrawerState(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("open")) {
+      setDrawerState(false);
+    }
+  });
+})();
 
 
 /* =====================================

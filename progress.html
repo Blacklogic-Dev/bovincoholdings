@@ -575,6 +575,10 @@ footer a:hover {
     right: -290px;
   }
 
+  .drawer.open {
+    right: 0;
+  }
+
   .banner {
 
     min-height: 380px;
@@ -976,89 +980,51 @@ footer a:hover {
 
 <script>
 
-const toggle =
-  document.getElementById("drawerToggle");
+(function () {
+  const toggle = document.getElementById("drawerToggle");
+  const drawer = document.getElementById("drawer");
 
-const drawer =
-  document.getElementById("drawer");
+  if (!toggle || !drawer) return;
 
-
-toggle.addEventListener("click", () => {
-
-  const isOpen =
-    drawer.classList.toggle("open");
-
-  toggle.setAttribute(
-    "aria-expanded",
-    isOpen
-  );
-
-  toggle.setAttribute(
-    "aria-label",
-    isOpen
-      ? "Close navigation menu"
-      : "Open navigation menu"
-  );
-
-  toggle.innerHTML = isOpen
-    ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
-    : '<i class="fas fa-bars" aria-hidden="true"></i>';
-
-});
-
-
-/* Close menu when navigation item is selected */
-
-document
-  .querySelectorAll(".drawer-item")
-  .forEach(item => {
-
-    item.addEventListener("click", () => {
-
-      drawer.classList.remove("open");
-
-      toggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      toggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-      );
-
-      toggle.innerHTML =
-        '<i class="fas fa-bars" aria-hidden="true"></i>';
-
-    });
-
-  });
-
-
-/* Close drawer with Escape */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-
-    drawer.classList.remove("open");
-
-    toggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
+  function setDrawerState(open) {
+    drawer.classList.toggle("open", open);
+    drawer.style.right = open ? "0" : "";
+    toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute(
       "aria-label",
-      "Open navigation menu"
+      open ? "Close navigation menu" : "Open navigation menu"
     );
-
-    toggle.innerHTML =
-      '<i class="fas fa-bars" aria-hidden="true"></i>';
-
+    toggle.innerHTML = open
+      ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
+      : '<i class="fas fa-bars" aria-hidden="true"></i>';
   }
 
-});
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setDrawerState(!drawer.classList.contains("open"));
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedDrawer = drawer.contains(event.target);
+    const clickedToggle = toggle.contains(event.target);
+
+    if (drawer.classList.contains("open") && !clickedDrawer && !clickedToggle) {
+      setDrawerState(false);
+    }
+  });
+
+  document.querySelectorAll(".drawer-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      setDrawerState(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("open")) {
+      setDrawerState(false);
+    }
+  });
+})();
 
 </script>
 

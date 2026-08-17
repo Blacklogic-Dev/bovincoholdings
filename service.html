@@ -208,9 +208,10 @@ body {
 
 /* ================= HERO ================= */
 
+/* ================= HERO IMAGE SLIDESHOW ================= */
+
 .hero {
   min-height: 58vh;
-
   position: relative;
 
   display: flex;
@@ -221,14 +222,84 @@ body {
 
   padding: 100px 20px 80px;
 
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Individual slideshow images */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+
+  z-index: -3;
+
+  transform: scale(1.03);
+
+  transition:
+    opacity 1.8s ease-in-out,
+    transform 8s ease;
+}
+
+/* Active image */
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark professional overlay */
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
   background:
     linear-gradient(
-      rgba(0,8,20,0.65),
-      rgba(0,8,20,0.9)
-    ),
-    url("build.jpg") center/cover no-repeat;
+      rgba(0,8,20,0.58),
+      rgba(0,8,20,0.88)
+    );
 
-  isolation: isolate;
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+/* Subtle blue cinematic overlay */
+.hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,31,63,0.15),
+      transparent 45%,
+      rgba(0,0,0,0.18)
+    );
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+/* Keep hero content above images */
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 850px;
+
+  animation: heroIn 0.9s ease both;
 }
 
 .hero::after {
@@ -692,6 +763,10 @@ footer strong {
     right: -290px;
   }
 
+  .drawer.open {
+    right: 0;
+  }
+
   .hero {
     min-height: 65vh;
 
@@ -815,43 +890,90 @@ footer strong {
 
   <!-- HERO -->
 
-  <header class="hero">
+ <header class="hero" aria-label="Bovinco Holdings Services">
 
-    <div class="hero-content">
+  <!-- ================= HERO SLIDESHOW ================= -->
 
-      <div class="hero-badge">
-        <i class="fas fa-circle"></i>
-        Bovinco Holdings
-      </div>
+  <img
+    src="bovi5.jpg"
+    class="hero-slide active"
+    alt="Bovinco Holdings professional services and operations"
+    fetchpriority="high"
+  >
 
-      <h1>
-        Professional
-        <span>Services</span>
-      </h1>
+  <img
+    src="bo6.jpg"
+    class="hero-slide"
+    alt="Bovinco Holdings operational services"
+    loading="eager"
+  >
 
-      <p>
-        Structured solutions supporting mining,
-        infrastructure, maintenance, security
-        and operational requirements.
-      </p>
+  <img
+    src="bo4.png"
+    class="hero-slide"
+    alt="Bovinco Holdings infrastructure and support services"
+    loading="eager"
+  >
 
-      <div class="hero-actions">
+  <img
+    src="bovi4.jpg"
+    class="hero-slide"
+    alt="Bovinco Holdings industrial and mining services"
+    loading="eager"
+  >
 
-        <a href="https://bovincogallery.netlify.app/" class="hero-btn primary">
-          Explore Gallery
-          <i class="fas fa-arrow-down"></i>
-        </a>
+  <img
+    src="bo7.png"
+    class="hero-slide"
+    alt="Bovinco Holdings security and operational solutions"
+    loading="eager"
+  >
 
-        <a href="contact.html" class="hero-btn secondary">
-          Request a Service
-          <i class="fas fa-arrow-right"></i>
-        </a>
+  <!-- ================= HERO CONTENT ================= -->
 
-      </div>
+  <div class="hero-content">
+
+    <div class="hero-badge">
+      <i class="fas fa-circle"></i>
+      Bovinco Holdings
+    </div>
+
+    <h1>
+      Professional
+      <span>Services</span>
+    </h1>
+
+    <p>
+      Structured solutions supporting mining,
+      infrastructure, maintenance, security
+      and operational requirements.
+    </p>
+
+    <div class="hero-actions">
+
+      <a
+        href="https://bovincogallery.netlify.app/"
+        class="hero-btn primary"
+      >
+        Explore Gallery
+        <i class="fas fa-images"></i>
+      </a>
+
+      <a
+        href="contact.html"
+        class="hero-btn secondary"
+      >
+        Request a Service
+        <i class="fas fa-arrow-right"></i>
+      </a>
 
     </div>
 
-  </header>
+  </div>
+
+</header>
+
+    
 
   <!-- SERVICES -->
 
@@ -1159,47 +1281,79 @@ footer strong {
 <!-- ================= JAVASCRIPT ================= -->
 
 <script>
+  /* ================= HERO IMAGE SLIDESHOW ================= */
+
+(function () {
+
+  const slides = document.querySelectorAll(".hero-slide");
+
+  if (!slides.length) return;
+
+  let currentSlide = 0;
+
+  const slideDuration = 5000;
+
+  function showNextSlide() {
+
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide =
+      (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+  }
+
+  setInterval(showNextSlide, slideDuration);
+
+})();
 
 /* ================= DRAWER ================= */
 
-const toggle = document.getElementById("drawerToggle");
-const drawer = document.getElementById("drawer");
+(function () {
+  const toggle = document.getElementById("drawerToggle");
+  const drawer = document.getElementById("drawer");
 
-toggle.addEventListener("click", () => {
+  if (!toggle || !drawer) return;
 
-  const isOpen = drawer.classList.toggle("open");
-
-  toggle.setAttribute(
-    "aria-expanded",
-    isOpen ? "true" : "false"
-  );
-
-  toggle.innerHTML = isOpen
-    ? '<i class="fas fa-xmark"></i>'
-    : '<i class="fas fa-bars"></i>';
-
-});
-
-
-/* Close drawer when clicking a link */
-
-document.querySelectorAll(".drawer-item").forEach(link => {
-
-  link.addEventListener("click", () => {
-
-    drawer.classList.remove("open");
-
+  function setDrawerState(open) {
+    drawer.classList.toggle("open", open);
+    drawer.style.right = open ? "0" : "";
+    toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute(
-      "aria-expanded",
-      "false"
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
     );
+    toggle.innerHTML = open
+      ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
+      : '<i class="fas fa-bars" aria-hidden="true"></i>';
+  }
 
-    toggle.innerHTML =
-      '<i class="fas fa-bars"></i>';
-
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setDrawerState(!drawer.classList.contains("open"));
   });
 
-});
+  document.addEventListener("click", (event) => {
+    const clickedDrawer = drawer.contains(event.target);
+    const clickedToggle = toggle.contains(event.target);
+
+    if (drawer.classList.contains("open") && !clickedDrawer && !clickedToggle) {
+      setDrawerState(false);
+    }
+  });
+
+  document.querySelectorAll(".drawer-item").forEach((link) => {
+    link.addEventListener("click", () => {
+      setDrawerState(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("open")) {
+      setDrawerState(false);
+    }
+  });
+})();
 
 
 /* ================= SCROLL REVEAL ================= */

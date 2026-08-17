@@ -762,6 +762,10 @@ footer strong {
     right: -280px;
   }
 
+  .drawer.open {
+    right: 0;
+  }
+
   .banner {
     min-height: 60vh;
 
@@ -1139,69 +1143,51 @@ footer strong {
 
 <script>
 
-const toggle = document.getElementById("drawerToggle");
-const drawer = document.getElementById("drawer");
+(function () {
+  const toggle = document.getElementById("drawerToggle");
+  const drawer = document.getElementById("drawer");
 
-toggle.addEventListener("click", () => {
+  if (!toggle || !drawer) return;
 
-  const isOpen = drawer.classList.toggle("open");
-
-  toggle.setAttribute(
-    "aria-expanded",
-    isOpen
-  );
-
-  toggle.innerHTML = isOpen
-    ? '<i class="fas fa-times"></i>'
-    : '<i class="fas fa-bars"></i>';
-
-});
-
-
-/* Close drawer when clicking outside */
-
-document.addEventListener("click", (event) => {
-
-  if (
-    drawer.classList.contains("open") &&
-    !drawer.contains(event.target) &&
-    !toggle.contains(event.target)
-  ) {
-
-    drawer.classList.remove("open");
-
+  function setDrawerState(open) {
+    drawer.classList.toggle("open", open);
+    drawer.style.right = open ? "0" : "";
+    toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute(
-      "aria-expanded",
-      "false"
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
     );
-
-    toggle.innerHTML =
-      '<i class="fas fa-bars"></i>';
-
+    toggle.innerHTML = open
+      ? '<i class="fas fa-xmark" aria-hidden="true"></i>'
+      : '<i class="fas fa-bars" aria-hidden="true"></i>';
   }
 
-});
-
-
-/* Close drawer after navigation */
-
-document.querySelectorAll(".drawer-item").forEach(item => {
-
-  item.addEventListener("click", () => {
-
-    drawer.classList.remove("open");
-
-    toggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    toggle.innerHTML =
-      '<i class="fas fa-bars"></i>';
-
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setDrawerState(!drawer.classList.contains("open"));
   });
 
-});
+  document.addEventListener("click", (event) => {
+    const clickedDrawer = drawer.contains(event.target);
+    const clickedToggle = toggle.contains(event.target);
+
+    if (drawer.classList.contains("open") && !clickedDrawer && !clickedToggle) {
+      setDrawerState(false);
+    }
+  });
+
+  document.querySelectorAll(".drawer-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      setDrawerState(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("open")) {
+      setDrawerState(false);
+    }
+  });
+})();
 
 </script>
 
